@@ -1,0 +1,81 @@
+/* 
+---------------------------------------------------
+COMMON STYLES START
+---------------------------------------------------
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    list-style: none;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1400px;
+    width: 100%;
+    padding: 0 30px;
+    margin: 0 auto;
+}
+
+.common_h2 {
+    width: 100%;
+    padding: 30px 0;
+
+    text-align: center;
+
+}
+
+/* 1.HEADER START */
+
+.header nav ul {
+    display: flex;
+    padding: 30px 0;
+}
+
+.header nav ul li {
+    margin-right: 10px;
+
+    text-transform: uppercase;
+}
+
+/* 1.HEADER END */
+
+/* 
+---------------------------------------------------
+COMMON STYLES END
+---------------------------------------------------
+*/
+
+/* 
+---------------------------------------------------
+HOME PAGE START
+---------------------------------------------------
+*/
+
+.events_type__list {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.events_type__list a {
+    width: 20%;
+    padding: 40px;
+
+    border: 1px solid black;
+    text-align: center;
+}
+
+/* 
+---------------------------------------------------
+HOME PAGE END
+---------------------------------------------------
+*/
+
+
+
+
+

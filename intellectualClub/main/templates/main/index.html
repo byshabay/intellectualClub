@@ -1,0 +1,34 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div class="events_type">
+
+        <div class="common_h2">
+            События
+        </div>
+
+        <div class="events_type__list">
+            <a href="{% url 'excurtion' %}">
+                Экскурсии
+            </a>
+
+            <a href="{% url 'seminars' %}">
+                Мастер-классы
+            </a>
+
+            <a href="{% url 'chat' %}">
+                Беседка
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

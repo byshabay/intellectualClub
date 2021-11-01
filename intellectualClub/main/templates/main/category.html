@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+
+<!-- TITLE START -->
+
+{% block title %}
+
+{{ title }}
+
+{% endblock %}
+
+<!-- TITLE END -->
+
+<!-- CONTENT START -->
+
+{% block content %}
+
+<div class="container">
+
+    <h1>{{title}}</h1>
+
+    {% for el in events %}
+    {% if el.type == type %}
+
+    <h3>
+        {{ el.title }}
+    </h3>
+    <p>
+        {{ el.description }}
+    </p>
+    {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+<!-- CONTENT END -->
