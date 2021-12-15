@@ -1,19 +1,14 @@
 {% extends 'main/base.html' %}
 
-{% block title %}
-{{ title }}
-{% endblock %}
-
 {% block content %}
 <div class="container">
-
     <div class="events_type">
 
         <div class="common_h2">
             События
         </div>
 
-        <div class="events_type__list">
+        <!-- <div class="events_type__list">
             <a href="{% url 'excurtion' %}">
                 Экскурсии
             </a>
@@ -25,7 +20,49 @@
             <a href="{% url 'chat' %}">
                 Беседка
             </a>
+        </div> -->
+        <h2>
+            Все категории
+        </h2>
+        <div class="events_type__list">
+            {% for c in cats %}
+
+            {% if c.pk == cat_selected %}
+            <div>
+                {{ c.name }}
+            </div>
+
+            {% else %}
+
+            <a href="{{ c.get_absolute_url }}"> {{ c.name }}</a>
+
+            {% endif %}
+
+            {% endfor %}
+
         </div>
+        <ul>
+            {% for e in events %}
+
+            <li>
+                <h2>{{e.title}}</h2>
+                <p>
+                    Категория: {{ e.cat }}
+                </p>
+                <p>
+                    Дата: {{ e.time_upload }}
+                </p>
+
+                {% autoescape off %}
+                <p>{{e.description|linebreaks | truncatewords:50}}</p>
+                <a href="{{ e.get_absolute_url }}">Read more</a>
+
+                {% endautoescape %}
+                <hr>
+            </li>
+
+            {% endfor %}
+        </ul>
 
     </div>
 

@@ -6,11 +6,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %}</title>
+    <title>{{ title }}</title>
 
     <!-- SELF-WRITTEN STYLES -->
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+
+    <!-- TEST ICON -->
+
+    <link rel="shortcut icon" href="{% static 'main/images/test.jpg' %}" type="image/x-icon">
 
 </head>
 
@@ -21,21 +25,13 @@
     <header class="header">
         <nav class="container">
             <ul>
+                {% for m in menu %}
+
                 <li>
-                    <a href="{% url 'home' %}">
-                        Главная
-                    </a>
+                    <a href="{% url m.url_name %}">{{ m.title }}</a>
                 </li>
-                <li>
-                    <a href="{% url 'about' %}">
-                        О нас
-                    </a>
-                </li>
-                <li>
-                    <a href="admin/">
-                        Панель администратора
-                    </a>
-                </li>
+
+                {% endfor %}
             </ul>
         </nav>
     </header>
