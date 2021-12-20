@@ -45,6 +45,10 @@
             {% for e in events %}
 
             <li>
+                {% if e.photo %}
+                <img src="{{ e.photo.url }}" alt="">
+                {% endif %}
+
                 <h2>{{e.title}}</h2>
                 <p>
                     Категория: {{ e.cat }}
