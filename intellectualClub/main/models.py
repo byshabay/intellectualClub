@@ -6,6 +6,7 @@ from django.urls import reverse
 
 class Event(models.Model):
     title = models.CharField('Название', max_length=50)
+    slug = models.SlugField(unique=True, db_index=True, verbose_name='URL')
     description = models.TextField('Описание')
     photo = models.ImageField(
         'Фото', upload_to="photos/%Y/%m/%d/", null=True)
@@ -13,7 +14,7 @@ class Event(models.Model):
     time_upload = models.DateTimeField('Дата изменения', auto_now=True)
     is_published = models.BooleanField('Публикация', default=True)
     cat = models.ForeignKey('Category',
-                            on_delete=models.PROTECT, null=True, verbose_name='Категория')
+                            on_delete=models.PROTECT, verbose_name='Категория')
 
     def __str__(self):
         return self.title
@@ -24,7 +25,7 @@ class Event(models.Model):
         ordering = ['-time_create', 'title']
 
     def get_absolute_url(self):
-        return reverse('post', kwargs={'post_id': self.pk})
+        return reverse('post', kwargs={'post_slug': self.slug})
 
 # 1.EVENT TABLE END
 
@@ -34,12 +35,13 @@ class Event(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=100, db_index=True,
                             verbose_name='Название категории')
+    slug = models.SlugField(unique=True, db_index=True, verbose_name='URL')
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('category', kwargs={'cat_id': self.pk})
+        return reverse('category', kwargs={'cat_slug': self.slug})
 
     class Meta:
         verbose_name = "Категория"

@@ -12,7 +12,6 @@ urlpatterns = [
     path('chat', views.chat, name="chat"),
     path('regiter', views.chat, name='register'),
     path('login', views.chat, name='login'),
-    path('post/<int:post_id>', views.show_post, name='post'),
-    path('category/<int:cat_id>', views.show_category, name="category")
+    path('post/<slug:post_slug>', views.show_post, name='post'),
+    path('category/<slug:cat_slug>', views.show_category, name="category")
 ]
-

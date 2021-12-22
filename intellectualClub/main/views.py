@@ -1,5 +1,5 @@
 from django.http.response import Http404, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from .models import *
 
@@ -69,14 +69,24 @@ def chat(request):
 
 # SHOW PRODUCT CART
 
-def show_post(request, post_id):
-    return HttpResponse(f"Отображение статьи с id = {post_id}")
+def show_post(request, post_slug):
+    post = get_object_or_404(Event, slug=post_slug)
+
+    context = {
+        'post': post,
+        'menu': menu,
+        'title': post.title,
+        'cat_selected': post.cat_id,
+    }
+
+    return render(request, 'main/post.html', context=context)
 
 # CATEGORY
 
 
-def show_category(request, cat_id):
-    events = Event.objects.filter(cat_id=cat_id)
+def show_category(request, cat_slug):
+    cats = Category.objects.get(slug=cat_slug)
+    events = Event.objects.filter(cat_id=cats.pk)
 
     if len(events) == 0:
         raise Http404()
@@ -85,6 +95,6 @@ def show_category(request, cat_id):
         'events': events,
         'menu': menu,
         'title': 'Отображение по рубрикам',
-        'cat_selected': cat_id,
+        'cat_selected': cats.pk,
     }
     return render(request, 'main/index.html', context=context)

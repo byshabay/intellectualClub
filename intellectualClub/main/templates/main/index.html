@@ -33,11 +33,8 @@
                     Дата: {{ e.time_upload }}
                 </p>
 
-                {% autoescape off %}
                 <p>{{e.description|linebreaks | truncatewords:50}}</p>
                 <a href="{{ e.get_absolute_url }}">Read more</a>
-
-                {% endautoescape %}
                 <hr>
             </li>
 
