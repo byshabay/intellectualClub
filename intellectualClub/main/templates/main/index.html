@@ -1,5 +1,7 @@
 {% extends 'main/base.html' %}
 
+{% load main_tags %}
+
 {% block content %}
 <div class="container">
     <div class="events_type">
@@ -7,38 +9,12 @@
         <div class="common_h2">
             События
         </div>
-
-        <!-- <div class="events_type__list">
-            <a href="{% url 'excurtion' %}">
-                Экскурсии
-            </a>
-
-            <a href="{% url 'seminars' %}">
-                Мастер-классы
-            </a>
-
-            <a href="{% url 'chat' %}">
-                Беседка
-            </a>
-        </div> -->
         <h2>
             Все категории
         </h2>
         <div class="events_type__list">
-            {% for c in cats %}
 
-            {% if c.pk == cat_selected %}
-            <div>
-                {{ c.name }}
-            </div>
-
-            {% else %}
-
-            <a href="{{ c.get_absolute_url }}"> {{ c.name }}</a>
-
-            {% endif %}
-
-            {% endfor %}
+            {% show_categories '-name' cat_selected %}
 
         </div>
         <ul>

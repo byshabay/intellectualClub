@@ -7,10 +7,10 @@ from .models import *
 # MAIN MENU
 
 menu = [
-    {'title' : 'Главная', 'url_name': 'home'},
-    {'title' : 'О нас', 'url_name': 'about'},
-    {'title' : 'Регистрация', 'url_name': 'login'},
-    {'title' : 'Вход', 'url_name': 'login'},
+    {'title': 'Главная', 'url_name': 'home'},
+    {'title': 'О нас', 'url_name': 'about'},
+    {'title': 'Регистрация', 'url_name': 'login'},
+    {'title': 'Вход', 'url_name': 'login'},
 ]
 
 
@@ -19,15 +19,13 @@ menu = [
 
 def index(request):
     events = Event.objects.all()
-    cats = Category.objects.all()
     context = {
         'events': events,
-        'cats': cats,
         'menu': menu,
         'title': 'Главная страница сайта',
         'cat_selected': 0
     }
-    return render(request, 'main/index.html', context = context)
+    return render(request, 'main/index.html', context=context)
 
 
 # ABOUT US PAGE
@@ -37,7 +35,7 @@ def about(request):
         'menu': menu,
         'title': 'О нас'
     }
-    return render(request, 'main/about.html', context = context)
+    return render(request, 'main/about.html', context=context)
 
 
 # EXCURTION PAGE
@@ -49,7 +47,7 @@ def excurtion(request):
         'menu': menu,
         'title': 'Экскурсии'
     }
-    return render(request, 'main/category.html', context = context)
+    return render(request, 'main/category.html', context=context)
 
 
 # SEMINARS PAGE
@@ -61,7 +59,7 @@ def seminars(request):
         'menu': menu,
         'title': 'Мастер классы'
     }
-    return render(request, 'main/category.html', context = context)
+    return render(request, 'main/category.html', context=context)
 
 
 # CHAT PAGE
@@ -74,19 +72,19 @@ def chat(request):
 def show_post(request, post_id):
     return HttpResponse(f"Отображение статьи с id = {post_id}")
 
-# CATEGORY 
+# CATEGORY
+
+
 def show_category(request, cat_id):
     events = Event.objects.filter(cat_id=cat_id)
-    cats = Category.objects.all()
 
-    if len(events) == 0 :
+    if len(events) == 0:
         raise Http404()
 
     context = {
         'events': events,
-        'cats': cats,
         'menu': menu,
         'title': 'Отображение по рубрикам',
         'cat_selected': cat_id,
     }
-    return render(request, 'main/index.html', context = context)
+    return render(request, 'main/index.html', context=context)
