@@ -1,5 +1,7 @@
 from django.http.response import Http404, HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
+
+from .forms import *
 
 from .models import *
 
@@ -11,6 +13,7 @@ menu = [
     {'title': 'О нас', 'url_name': 'about'},
     {'title': 'Регистрация', 'url_name': 'login'},
     {'title': 'Вход', 'url_name': 'login'},
+    {'title': 'Добавить событие', 'url_name': 'addevent'}
 ]
 
 
@@ -98,3 +101,18 @@ def show_category(request, cat_slug):
         'cat_selected': cats.pk,
     }
     return render(request, 'main/index.html', context=context)
+
+
+# ADD NEW EVENTS
+def addevent(request):
+
+    if(request.method == 'POST'):
+        form = AddEventForm(request.POST, request.FILES)
+        if form.is_valid():
+            # print(form.cleaned_data)
+            form.save()
+            return redirect('home')
+    else:
+        form = AddEventForm()
+
+    return render(request, 'main/addevent.html', {'form': form, 'menu': menu, 'title': 'Добавить событие'})
