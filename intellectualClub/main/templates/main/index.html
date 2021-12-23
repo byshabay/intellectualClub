@@ -14,7 +14,24 @@
         </h2>
         <div class="events_type__list">
 
-            {% show_categories '-name' cat_selected %}
+            {% for c in cats %}
+
+            {% if c.event__count > 0 %}
+
+            {% if c.pk == cat_selected %}
+            <div>
+                {{ c.name }}
+            </div>
+
+            {% else %}
+
+            <a href="{{ c.get_absolute_url }}"> {{ c.name }}</a>
+
+            {% endif %}
+
+            {% endif %}
+
+            {% endfor %}
 
         </div>
         <ul>

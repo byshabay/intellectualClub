@@ -1,37 +1,27 @@
-from re import template
+from django.core import exceptions
 from django.http.response import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .forms import *
 from .models import *
-
-# MAIN MENU
-
-menu = [
-    {'title': 'Главная', 'url_name': 'home'},
-    {'title': 'О нас', 'url_name': 'about'},
-    {'title': 'Регистрация', 'url_name': 'login'},
-    {'title': 'Вход', 'url_name': 'login'},
-    {'title': 'Добавить событие', 'url_name': 'addevent'}
-]
-
+from .utils import *
 
 # HOME PAGE
 
-class EventHome(ListView):
+
+class EventHome(DataMixin, ListView):
     model = Event
     template_name = 'main/index.html'
     context_object_name = 'events'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['menu'] = menu
-        context['title'] = 'Главная страница'
-        context['cat_selected'] = 0
-        return context
+        c_def = self.get_user_context(title="Главная страница")
+        return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):
         return Event.objects.filter(is_published=True)
@@ -78,7 +68,7 @@ def chat(request):
 
 # SHOW EVENT CART
 
-class ShowEventCart(DetailView):
+class ShowEventCart(DataMixin, DetailView):
     model = Event
     template_name = 'main/event.html'
     slug_url_kwarg = 'event_slug'
@@ -86,14 +76,13 @@ class ShowEventCart(DetailView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['menu'] = menu
-        context['title'] = context['event']
-        return context
+        c_def = self.get_user_context(title=context['event'])
+        return dict(list(context.items()) + list(c_def.items()))
 
 # CATEGORY
 
 
-class EventCategory(ListView):
+class EventCategory(DataMixin, ListView):
     model = Event
     template_name = 'main/index.html'
     context_object_name = 'events'
@@ -104,33 +93,20 @@ class EventCategory(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['menu'] = menu
-        context['title'] = 'Категория - ' + str(context['events'][0].cat)
-        context['cat_selected'] = context['events'][0].cat_id
-        return context
+        c_def = self.get_user_context(
+            title='Категория - ' + str(context['events'][0].cat),
+            cat_selected=context['events'][0].cat_id)
+        return dict(list(context.items()) + list(c_def.items()))
 
 # ADD NEW EVENTS
 
 
-# def addevent(request):
-
-#     if(request.method == 'POST'):
-#         form = AddEventForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             # print(form.cleaned_data)
-#             form.save()
-#             return redirect('home')
-#     else:
-#         form = AddEventForm()
-
-#     return render(request, 'main/addevent.html', {'form': form, 'menu': menu, 'title': 'Добавить событие'})
-
-class AddEvent(CreateView):
+class AddEvent(LoginRequiredMixin, DataMixin, CreateView):
     form_class = AddEventForm
     template_name = 'main/addevent.html'
+    raise_exception = True
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['menu'] = menu
-        context['title'] = 'Добавление события'
-        return context
+        c_def = self.get_user_context(title='Добавление события')
+        return dict(list(context.items()) + list(c_def.items()))
