@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<h1>
+    {{event.title}}
+</h1>
+
+
+{% if event.photo %}
+<p>
+    <img src="{{event.photo.url}}" alt="">
+</p>
+{% endif %}
+
+{{event.description | linebreaks}}
+
+{% endblock %}

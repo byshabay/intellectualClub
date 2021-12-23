@@ -25,7 +25,7 @@ class Event(models.Model):
         ordering = ['-time_create', 'title']
 
     def get_absolute_url(self):
-        return reverse('post', kwargs={'post_slug': self.slug})
+        return reverse('event', kwargs={'event_slug': self.slug})
 
 # 1.EVENT TABLE END
 
