@@ -33,9 +33,17 @@
 
                 {% endfor %}
 
+                {% if request.user.is_authenticated %}
+
+                <li>
+                    Добро пожаловать, {{ user.username }} | <a href="{% url 'logout' %}">Выйти</a>
+                </li>
+                {% else %}
                 <li>
                     <a href="{% url 'register' %}"> Регистрация </a> | <a href="{% url 'login' %}"> Вход </a>
                 </li>
+                {% endif %}
+
             </ul>
         </nav>
     </header>
