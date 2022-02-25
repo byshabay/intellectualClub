@@ -1,3 +1,6 @@
+from distutils.command.clean import clean
+from statistics import mode
+from tabnanny import verbose
 from django.db import models
 from django.urls import reverse
 
@@ -47,4 +50,23 @@ class Category(models.Model):
         verbose_name = "Категория"
         verbose_name_plural = 'Категории'
 
-        # 2.EVENT CATEGORY TABLE END
+# 2.EVENT CATEGORY TABLE END
+
+
+# 3.EVENT SCHEDULE TABLE START
+
+class EventSchedule(models.Model):
+    event = models.ForeignKey(
+        'Event', on_delete=models.PROTECT, verbose_name='Событие')
+    date = models.DateTimeField('Дата и время проведения')
+    status = models.BooleanField('Доступная дата / нет', default=True)
+
+    def __str__(self):
+        return str(self.id)
+
+    class Meta:
+        verbose_name = "Расписание событий"
+        verbose_name_plural = "Расписание событий"
+
+
+# 3.EVENT SCHEDULE TABLE END

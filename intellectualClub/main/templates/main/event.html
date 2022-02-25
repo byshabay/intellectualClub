@@ -15,4 +15,29 @@
 
 {{event.description | linebreaks}}
 
+
+<!-- SCHEDULE START -->
+
+{% if schedule %}
+
+<a href="#schedule">Купить билет</a>
+
+<form id="schedule" action="#">
+    <h2>
+        Расписание:
+    </h2>
+    {% for s in schedule %}
+    <input type="radio" name="availableDate" id="availableDate{{forloop.counter}}">
+    <label for="availableDate{{forloop.counter}}">{{s.date}}</label>
+    <br>
+
+    {%endfor%}
+</form>
+
+{% endif %}
+
+<!-- SCHEDULE END -->
+
+
+
 {% endblock %}

@@ -18,5 +18,12 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ("name",)}
 
 
+class EventScheduleAdmin(admin.ModelAdmin):
+    list_display = ('id', 'event', 'date', 'status')
+    search_fields = ('date',)
+    list_editable = ('status',)
+
+
 admin.site.register(Event, EventAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(EventSchedule, EventScheduleAdmin)

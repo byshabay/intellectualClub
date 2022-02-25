@@ -1,3 +1,4 @@
+from cgi import test
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core import exceptions
 from django.http.response import Http404, HttpResponse
@@ -50,7 +51,9 @@ class ShowEventCart(DataMixin, DetailView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title=context['event'])
+        c_def = self.get_user_context(
+            title=context['event'], schedule=EventSchedule.objects.filter(event=context['event'], status='True'))
+
         return dict(list(context.items()) + list(c_def.items()))
 
 # CATEGORY
