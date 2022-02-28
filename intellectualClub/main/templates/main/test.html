@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<!-- TEST START -->
+
+<button type="button" class="btn btn-primary">Primary</button>
+
+{% verbatim %}
+<!-- <div class="container" id="test">
+    <div class="btn btn-primary btn-lg" v-for="event in events">
+        Title: {{ event.title }}
+        <br>
+        Description: {{ event.description }}
+    </div>
+</div> -->
+<div id="basic-event">
+    <button v-if="counter <= 10" @click='counterPlus'>Добавить</button>
+    <p>Counter: {{counter}}</p>
+    <button v-if="counter > 0" @click='counterMinus'>Удалить</button>
+</div>
+
+
+{% endverbatim %}
+
+
+
+{% endblock %}
+
+<!-- TEST END -->

@@ -33,14 +33,22 @@
 
     {%endfor%}
 
-    <button name="plus">+</button>
-    <button name="minus">-</button>
+    {% verbatim %}
+
+    <div id="counter">
+        <div class="btn btn-primary" v-if="counter < 10" @click='counterPlus'>Добавить</div>
+        <p>Кол-во:</p>
+        <input type="text" v-model="counter">
+        <div class="btn btn-primary" v-if="counter > 0" @click='counterMinus'>Удалить</div>
+    </div>
+
+
+    {% endverbatim %}
 </form>
 
 {% endif %}
 
 <!-- SCHEDULE END -->
-
 
 
 {% endblock %}

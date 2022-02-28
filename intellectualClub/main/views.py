@@ -65,6 +65,10 @@ class Test(ModelViewSet):
     serializer_class = ShowEventSerializer
 
 
+def test(request):
+    return render(request, 'main/test.html')
+
+
 # CATEGORY
 
 
