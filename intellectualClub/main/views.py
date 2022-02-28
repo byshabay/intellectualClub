@@ -1,5 +1,8 @@
 from cgi import test
+
+from django.contrib.auth import login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView
 from django.core import exceptions
 from django.http.response import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
@@ -7,12 +10,12 @@ from django.urls.base import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
-from django.contrib.auth.views import LoginView
-from django.contrib.auth import logout, login
+from rest_framework.viewsets import ModelViewSet
 
 from .forms import *
 from .models import *
 from .utils import *
+from .serializers import ShowEventSerializer
 
 # HOME PAGE
 
@@ -55,6 +58,12 @@ class ShowEventCart(DataMixin, DetailView):
             title=context['event'], schedule=EventSchedule.objects.filter(event=context['event'], status='True'))
 
         return dict(list(context.items()) + list(c_def.items()))
+
+
+class Test(ModelViewSet):
+    queryset = Event.objects.all()
+    serializer_class = ShowEventSerializer
+
 
 # CATEGORY
 
