@@ -1,14 +1,17 @@
 {% extends 'main/base.html' %}
 
 {% load main_tags %}
+{% load static %}
 
 {% block content %}
+<img class="img-fluid" src="{% static 'main/images/bkg.jpg' %}" style="width: 100%;">
+
 <div class="container">
     <div class="events_type">
 
-        <div class="common_h2">
+        <h1 class="common_h2">
             События
-        </div>
+        </h1>
         <h2>
             Все категории
         </h2>
@@ -19,13 +22,13 @@
             {% if c.event__count > 0 %}
 
             {% if c.pk == cat_selected %}
-            <div>
+            <div class="btn btn-outline-success">
                 {{ c.name }}
             </div>
 
             {% else %}
 
-            <a href="{{ c.get_absolute_url }}"> {{ c.name }}</a>
+            <a class="btn btn-secondary" href="{{ c.get_absolute_url }}"> {{ c.name }}</a>
 
             {% endif %}
 
@@ -34,30 +37,47 @@
             {% endfor %}
 
         </div>
-        <ul>
-            {% for e in events %}
+        <div class="section section1">
+            <div class="container">
+                <div class="row">
+                    {% for e in events %}
 
-            <li>
-                {% if e.photo %}
-                <img src="{{ e.photo.url }}" alt="">
-                {% endif %}
+                    <div class="col-lg-4">
+                        <div class="product-item">
+                            <div>
 
-                <h2>{{e.title}}</h2>
-                <p>
-                    Категория: {{ e.cat }}
-                </p>
-                <p>
-                    Дата: {{ e.time_upload }}
-                </p>
+                                {% if e.photo %}
+                                <img class="img-fluid" src=" {{ e.photo.url }}" alt="">
+                                {% endif %}
+                            </div>
+                            <br>
 
-                <p>{{e.description|linebreaks | truncatewords:50}}</p>
-                <a href="{{ e.get_absolute_url }}">Read more</a>
-                <hr>
-            </li>
+                            <h4>{{e.title|truncatechars_html:10}}</h4>
+                            <p>
+                                Категория: {{ e.cat }}
+                            </p>
+                            <p>
+                                Дата: {{ e.time_upload }}
+                            </p>
 
-            {% endfor %}
-        </ul>
+                            <p>{{e.short_description|linebreaks }}</p>
 
+                            <div>
+                                {{ e.price }} руб.
+                            </div>
+                            <br>
+                            <div class="add-to-card-btn">
+                                <a class="btn btn-success" href="{{ e.get_absolute_url }}">Добавить в корзину</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>

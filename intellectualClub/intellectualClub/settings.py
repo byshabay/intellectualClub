@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     "debug_toolbar",
     'main.apps.MainConfig',
-    
+    'orders.apps.OrdersConfig',
 ]
 
 MIDDLEWARE = [

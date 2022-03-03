@@ -25,34 +25,12 @@
 
 </head>
 
-<body>
+<body class="wrapper">
 
     <!-- 1.HEADER START -->
 
     <header class="header">
-        <nav class="container">
-            <ul>
-                {% for m in menu %}
-
-                <li>
-                    <a href="{% url m.url_name %}">{{ m.title }}</a>
-                </li>
-
-                {% endfor %}
-
-                {% if request.user.is_authenticated %}
-
-                <li>
-                    Добро пожаловать, {{ user.username }} | <a href="{% url 'logout' %}">Выйти</a>
-                </li>
-                {% else %}
-                <li>
-                    <a href="{% url 'register' %}"> Регистрация </a> | <a href="{% url 'login' %}"> Вход </a>
-                </li>
-                {% endif %}
-
-            </ul>
-        </nav>
+        {% include 'main/navbar.html' %}
     </header>
 
     <!-- 1.HEADER END -->
@@ -62,20 +40,17 @@
     {% block content %}{% endblock %}
 
     {% if page_obj.has_other_pages %}
-
     <nav>
-        <ul>
+        <ul class="nmb">
             {% if page_obj.has_previous %}
 
-            <li>
-                <a href="?page={{ page_obj.previous_page_number }}">&lt;</a>
-            </li>
+            <a class="btn btn-primary" href="?page={{ page_obj.previous_page_number }}">&lt;</a>
 
             {% endif %}
 
             {% for p in paginator.page_range%}
             {% if page_obj.number == p %}
-            <li>
+            <li class="btn btn-light">
                 {{p}}
             </li>
 
@@ -89,7 +64,7 @@
                 {% if page_obj.has_next %}
 
                 <li>
-                    <a href="?page={{ page_obj.next_page_number }}">&gt;</a>
+                    <a class="btn btn-primary" href="?page={{ page_obj.next_page_number }}">&gt;</a>
                 </li>
 
                 {% endif %}
@@ -98,6 +73,8 @@
     {% endif %}
 
     <!-- 2.CONTENT END -->
+
+    {% include 'main/footer.html' %}
 
     <!-- SELF-WRITTEN SCRIPTS -->
     <script src="/static/main/js/main.js"></script>

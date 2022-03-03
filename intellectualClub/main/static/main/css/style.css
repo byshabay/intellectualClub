@@ -4,6 +4,37 @@ COMMON STYLES START
 ---------------------------------------------------
 */
 
+html, body {
+    position: relative;
+    min-height: 100vh;
+
+    background-color: #edeef0;
+}
+
+body {
+    padding-bottom: 133px;
+}
+
+footer {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.nmb {
+    display: flex;
+    width: 30%;
+    margin: 30px auto 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nmb a {
+    display: block;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -61,12 +92,16 @@ HOME PAGE START
     
 }
 
-.events_type__list a {
-    width: 20%;
-    padding: 40px;
 
-    border: 1px solid black;
+.product-item {
+    position: relative;
+    height: auto;
+    margin-top: 20px;
+    padding: 20px;
     text-align: center;
+
+    background-color: #fff;
+    border: 1px solid lightgray;
 }
 
 /* 

@@ -7,8 +7,6 @@ from .models import *
 menu = [
     {'title': 'Главная', 'url_name': 'home'},
     {'title': 'О нас', 'url_name': 'about'},
-    {'title': 'Регистрация', 'url_name': 'login'},
-    {'title': 'Вход', 'url_name': 'login'},
     {'title': 'Добавить событие', 'url_name': 'addevent'}
 ]
 
@@ -23,7 +21,7 @@ class DataMixin:
         user_menu = menu.copy()
 
         if not self.request.user.is_authenticated:
-            user_menu.pop(4)
+            user_menu.pop(2)
 
         context['menu'] = user_menu
         context['cats'] = cats
