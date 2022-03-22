@@ -2,60 +2,79 @@
 
 {% block content %}
 
-<h1>
-    {{event.title}}
-</h1>
+<div class="container">
+    <div class="content row">
+        <div class="col-lg-6">
+            {% if event.photo %}
+            <p>
+                <img class="img-fluid" src="{{event.photo.url}}" alt="">
+            </p>
+            {% endif %}
+
+            {% for image in event.eventimage_set.all %}
+            <img class="img-fluid" src="{{image.photo.url}}" alt="">
+            {% endfor %}
+
+        </div>
+        <div class="col-lg-6">
+            <h1 class="text-center">
+                {{event.title}}
+            </h1>
+
+            <h4>
+                Цена: {{event.price}} рублей
+            </h4>
+            <p>
+                {{event.description | linebreaks}}
+            </p>
+
+            <!-- SCHEDULE START -->
+
+            {% if schedule %}
+
+            <a class="btn btn-primary" href="#schedule">Купить билет</a>
+            <br>
+            <form id="schedule" action="#">
+                <h4>
+                    Расписание:
+                </h4>
+                {% for s in schedule %}
+                <input class="form-check-input" type="radio" name="availableDate" id="availableDate{{forloop.counter}}">
+                <label class="form-check-label" for="availableDate{{forloop.counter}}">{{s.date}}</label>
+                <br>
+
+                {%endfor%}
+
+                {% verbatim %}
+
+                <br>
+
+                <div id="counter">
+                    <div>Кол-во:</div>
+                    <input type="number" v-model="counter">
+                    <div class="btn btn-primary" v-if="counter < 10" @click='counterPlus'>Добавить</div>
+                    <div class="btn btn-primary" v-if="counter > 0" @click='counterMinus'>Удалить</div>
+                </div>
+
+                <br>
 
 
-{% if event.photo %}
-<p>
-    <img src="{{event.photo.url}}" alt="">
-</p>
-{% endif %}
+                {% endverbatim %}
+                <input class="form-control" type="text" placeholder="Имя">
+                <br>
+                <input class="form-control" type="text" placeholder="Email">
+                <br>
+                <button class="btn btn-primary" type="submit">Купить</button>
 
-{{event.description | linebreaks}}
+            </form>
 
+            {% endif %}
 
-<!-- SCHEDULE START -->
+            <!-- SCHEDULE END -->
 
-{% if schedule %}
-
-<a href="#schedule">Купить билет</a>
-
-<form id="schedule" action="#">
-    <h2>
-        Расписание:
-    </h2>
-    {% for s in schedule %}
-    <input type="radio" name="availableDate" id="availableDate{{forloop.counter}}">
-    <label for="availableDate{{forloop.counter}}">{{s.date}}</label>
-    <br>
-
-    {%endfor%}
-
-    {% verbatim %}
-
-    <div id="counter">
-        <div class="btn btn-primary" v-if="counter < 10" @click='counterPlus'>Добавить</div>
-        <p>Кол-во:</p>
-        <input type="text" v-model="counter">
-        <div class="btn btn-primary" v-if="counter > 0" @click='counterMinus'>Удалить</div>
+        </div>
     </div>
-
-    {% endverbatim %}
-
-    <div class="btn btn-primary">
-        Купить
-    </div>
-    <input type="text" placeholder="Имя">
-    <input type="text" placeholder="Email">
-    <button type="submit">Купить</button>
-
-</form>
-
-{% endif %}
-
-<!-- SCHEDULE END -->
+</div>
 
 
 {% endblock %}

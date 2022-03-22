@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path, os
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -41,6 +40,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     'main.apps.MainConfig',
     'orders.apps.OrdersConfig',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +138,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+LOGIN_URL = '/login'

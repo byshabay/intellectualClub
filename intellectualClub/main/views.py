@@ -1,4 +1,6 @@
 from cgi import test
+from pyexpat import model
+from re import template
 
 from django.contrib.auth import login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -7,10 +9,12 @@ from django.core import exceptions
 from django.http.response import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls.base import reverse_lazy
+from django.views import View
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from rest_framework.viewsets import ModelViewSet
+from django.views.generic.base import TemplateView
 
 from .forms import *
 from .models import *
@@ -141,3 +145,15 @@ class LoginUser(DataMixin, LoginView):
 def logout_user(request):
     logout(request)
     return redirect('login')
+
+
+# USER ACCOUNT
+class UserAccount(LoginRequiredMixin, DataMixin, TemplateView):
+    model = User
+    template_name = 'main/account.html'
+    raise_exception = False
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title='Мой аккаунт')
+        return dict(list(context.items()) + list(c_def.items()))
