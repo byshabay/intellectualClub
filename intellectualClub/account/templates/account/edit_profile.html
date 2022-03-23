@@ -1,17 +1,20 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
+<div class="container">
 
-<h1>
-    Редактирование аккаунта
-</h1>
+    <h1>
+        Редактирование аккаунта
+    </h1>
 
-<form action="#" method="post">
-    {% csrf_token %}
+    <form method="post" class="col-lg-4">
+        {% csrf_token %}
 
-    {{form.as_p}}
+        {{form.as_p}}
 
-    <button type="submit">Сохранить</button>
-</form>
+        <button class="btn btn-primary" type="submit">Сохранить</button>
+    </form>
+
+</div>
 
 {% endblock %}

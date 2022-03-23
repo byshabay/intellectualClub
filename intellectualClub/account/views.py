@@ -1,13 +1,10 @@
 from django.contrib.auth import login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
-from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import redirect
 from django.urls.base import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
-
-from django.contrib.auth.forms import UserChangeForm
 
 from django.views import generic
 from main.utils import *
@@ -70,7 +67,7 @@ class UserAccount(LoginRequiredMixin, DataMixin, TemplateView):
 
 
 class UserEditView(generic.UpdateView):
-    form_class = UserChangeForm
+    form_class = EditUserForm
     template_name = 'account/edit_profile.html'
     success_url = reverse_lazy('home')
 
