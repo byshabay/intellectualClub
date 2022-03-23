@@ -1,27 +1,15 @@
-from cgi import test
-from pyexpat import model
-from re import template
 
-from django.contrib.auth import login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView
-from django.core import exceptions
-from django.http.response import Http404, HttpResponse
-from django.shortcuts import get_object_or_404, redirect, render
-from django.urls.base import reverse_lazy
-from django.views import View
+from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from rest_framework.viewsets import ModelViewSet
-from django.views.generic.base import TemplateView
 
 from .forms import *
 from .models import *
 from .utils import *
 from .serializers import ShowEventSerializer
-
-from django.http import HttpResponseRedirect
 
 # HOME PAGE
 

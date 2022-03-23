@@ -1,8 +1,5 @@
 
-from dataclasses import field
-from unicodedata import name
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
@@ -48,13 +45,3 @@ class OrderForm(forms.Form):
     email = forms.CharField(max_length=100)
 
 # ORDER FORM END
-
-# ACCOUNT USER SETTINGS FORM START
-
-
-class UserSettingsForm(forms.ModelForm):
-    # name = forms.CharField(max_length=100)
-    class Meta:
-        model = User
-        fields = ['username', 'first_name']
-# ACCOUNT USER SETTINGS FORM END

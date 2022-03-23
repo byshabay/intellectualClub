@@ -19,8 +19,7 @@ urlpatterns = [
     path('addevents', views.AddEvent.as_view(), name='addevent'),
 
     path('event', views.test),
-    # path('account', views.UserAccount.as_view(), name='account'),
-    # path('settings', views.user_settings, name='user_settings'),
+
 
 ]
 

@@ -6,15 +6,15 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls.base import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
+
+from django.contrib.auth.forms import UserChangeForm
+
+from django.views import generic
 from main.utils import *
 
 from .forms import *
 
-
-def edit_profile(request):
-    return render(request, 'account/edit_profile.html')
-
-    #  REGISTER USER CLASS
+#  REGISTER USER CLASS
 
 
 class RegisterUser(DataMixin, CreateView):
@@ -66,17 +66,13 @@ class UserAccount(LoginRequiredMixin, DataMixin, TemplateView):
         c_def = self.get_user_context(title='Мой аккаунт')
         return dict(list(context.items()) + list(c_def.items()))
 
+# EDIT USER`S PROFILE
 
-# USER SETTINGS FORM
-# def user_settings(request):
-#     if request.method == 'POST':
-#         form = UserSettingsForm(request.POST)
-#         if form.is_valid():
-#             try:
-#                 form.update()
-#                 return redirect('account')
-#             except:
-#                 form.add_error(None, 'Ошибка изменения данных')
-#     else:
-#         form = UserSettingsForm()
-#     return render(request, 'main/account.html', {'form': form})
+
+class UserEditView(generic.UpdateView):
+    form_class = UserChangeForm
+    template_name = 'account/edit_profile.html'
+    success_url = reverse_lazy('home')
+
+    def get_object(self):
+        return self.request.user
