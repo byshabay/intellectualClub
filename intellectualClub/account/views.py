@@ -1,7 +1,8 @@
 from django.contrib.auth import login, logout
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView
-from django.shortcuts import redirect
+from django.contrib.auth.views import LoginView, PasswordChangeView
+from django.shortcuts import redirect, render
 from django.urls.base import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
@@ -52,19 +53,7 @@ def logout_user(request):
     return redirect('login')
 
 
-# USER ACCOUNT
-class UserAccount(LoginRequiredMixin, DataMixin, TemplateView):
-    model = User
-    template_name = 'account/account.html'
-    raise_exception = False
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title='Мой аккаунт')
-        return dict(list(context.items()) + list(c_def.items()))
-
 # EDIT USER`S PROFILE
-
 
 class UserEditView(generic.UpdateView):
     form_class = EditUserForm
@@ -73,3 +62,16 @@ class UserEditView(generic.UpdateView):
 
     def get_object(self):
         return self.request.user
+
+
+# USER CHANGE PASSWORD PAGE
+
+class PasswordsChangeView(PasswordChangeView):
+    form_class = PasswordChangingForm
+    success_url = reverse_lazy('password_success')
+
+# PASSWORD SUCCESS CHANGED PAGE
+
+
+def password_success(request):
+    return render(request, 'account/password_success.html', {})
