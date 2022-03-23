@@ -19,7 +19,7 @@
                 {% if request.user.is_authenticated %}
 
                 <li class="nav-item">
-                    Добро пожаловать, <a href="{% url 'account'%}">{{ user.username }}</a> <a class="btn btn-dark"
+                    Добро пожаловать, <a href="{% url 'edit_profile'%}">{{ user.username }}</a> <a class="btn btn-dark"
                         href="{% url 'logout' %}">Выйти</a>
                 </li>
                 {% else %}
