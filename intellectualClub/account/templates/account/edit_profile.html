@@ -7,6 +7,13 @@
         Редактирование аккаунта
     </h1>
 
+
+    {% if user.profile.profile_pic %}
+    <img width='100px' height="100px" class="rounded-circle border border-success"
+        src="{{user.profile.profile_pic.url}}" alt="">
+    {% endif %}
+    {{user.profile.bio}}
+
     <form method="post" class="col-lg-4">
         {% csrf_token %}
 
