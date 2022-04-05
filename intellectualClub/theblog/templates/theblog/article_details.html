@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1>
+        {{ post.title }}
+    </h1>
+
+    <h4>
+        Автор: {{ post.author }}
+    </h4>
+
+    <br>
+
+    <div>
+        {{ post.body }}
+    </div>
+</div>
+
+{% endblock %}

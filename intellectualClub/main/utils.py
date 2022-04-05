@@ -7,7 +7,8 @@ from .models import *
 menu = [
     {'title': 'Главная', 'url_name': 'home'},
     {'title': 'О нас', 'url_name': 'about'},
-    {'title': 'Добавить событие', 'url_name': 'addevent'}
+    {'title': 'Добавить событие', 'url_name': 'addevent'},
+    {'title': 'Блог', 'url_name': 'posts'}
 ]
 
 
