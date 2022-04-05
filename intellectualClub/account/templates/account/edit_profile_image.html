@@ -5,7 +5,7 @@
 <div class="container">
 
     <h1>
-        Редактирование аккаунта
+        Редактирование изображения пользователя
     </h1>
 
 
@@ -13,12 +13,9 @@
     <img width='100px' height="100px" class="rounded-circle border border-success"
         src="{{user.profile.profile_pic.url}}" alt="">
 
-    <a href="{% url 'edit_profile_image' user.profile.pk %}">Изменить изображение</a>
-
     {% else %}
     <img width='100px' height="100px" class="rounded-circle border border-success"
         src="{% static 'account/images/account_default.png' %}" alt="">
-    <a href="{% url 'edit_profile_image' user.pk %}">Добавить изображение</a>
     {% endif %}
     {{user.profile.bio}}
 

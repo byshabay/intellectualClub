@@ -2,12 +2,14 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, PasswordChangeView
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls.base import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
+from django.views.generic import DetailView
 
 from django.views import generic
+from account.models import Profile
 from main.utils import *
 
 from .forms import *
@@ -75,3 +77,28 @@ class PasswordsChangeView(PasswordChangeView):
 
 def password_success(request):
     return render(request, 'account/password_success.html', {})
+
+
+# EDIT USER IMAGE
+
+class EditUserImage(generic.UpdateView):
+    model = Profile
+    fields = ['profile_pic', ]
+    template_name = 'account/edit_profile_image.html'
+    success_url = reverse_lazy('home')
+
+
+# SHOW USER PAGE
+
+class ShowUserPageView(DetailView):
+    model = Profile
+    template_name = 'account/user_profile.html'
+
+    def get_context_data(self, *args, **kwargs):
+        users = Profile.objects.all()
+        context = super(ShowUserPageView, self).get_context_data(
+            *args, **kwargs)
+
+        page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
+        context["page_user"] = page_user
+        return context

@@ -4,14 +4,15 @@ from . import views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('edit_profile', views.UserEditView.as_view(), name='edit_profile'),
+    path('<int:pk>/edit_profile', views.UserEditView.as_view(), name='edit_profile'),
     path('regiter', views.RegisterUser.as_view(), name='register'),
     path('login', views.LoginUser.as_view(), name='login'),
     path('logout', views.logout_user, name='logout'),
-    # path('password/', auth_views.PasswordChangeView.as_view(
-    #     template_name='account/change-password.html'))
 
     path('password/', views.PasswordsChangeView.as_view(
         template_name='account/change-password.html')),
     path('password_success', views.password_success, name='password_success'),
+    path('<int:pk>/edit_profile_image', views.EditUserImage.as_view(),
+         name='edit_profile_image'),
+    path('<int:pk>/profile', views.ShowUserPageView.as_view(), name='profile'),
 ]

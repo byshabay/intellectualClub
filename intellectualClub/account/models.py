@@ -8,7 +8,6 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-    bio = models.TextField("Описание", null=True, blank=True, default=None)
     profile_pic = models.ImageField(
         "Изображение", null=True, upload_to='photos/profile_pic/')
 
