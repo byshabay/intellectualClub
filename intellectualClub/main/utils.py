@@ -8,7 +8,9 @@ menu = [
     {'title': 'Главная', 'url_name': 'home'},
     {'title': 'О нас', 'url_name': 'about'},
     {'title': 'Добавить событие', 'url_name': 'addevent'},
-    {'title': 'Блог', 'url_name': 'posts'}
+    {'title': 'Блог', 'url_name': 'posts'},
+    {'title': 'Добавить запись', 'url_name': 'add_post'}
+
 ]
 
 
@@ -23,6 +25,7 @@ class DataMixin:
 
         if not self.request.user.is_authenticated:
             user_menu.pop(2)
+            user_menu.pop(3)
 
         context['menu'] = user_menu
         context['cats'] = cats
