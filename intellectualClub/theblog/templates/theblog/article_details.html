@@ -8,7 +8,7 @@
     </h1>
 
     <h4>
-        Автор: {{ post.author }}
+        Автор: {{ post.author }} | <a href="{% url 'edit_article' post.pk %}">Отредактировать</a>
     </h4>
 
     <br>

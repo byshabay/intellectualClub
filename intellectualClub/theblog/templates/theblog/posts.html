@@ -12,7 +12,13 @@
             </a>
 
             | {{ post.author }}
+
+            | <small>
+                <a href="{% url 'edit_article' post.pk %}">Отредактировать</a>
+            </small>
+
             <br>
+
         </li>
 
         {% endfor %}
