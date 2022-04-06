@@ -7,9 +7,10 @@ from django.urls import reverse
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=255)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    body = models.TextField()
+    title = models.CharField('Название', max_length=255)
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, verbose_name='Автор')
+    body = models.TextField('Содержим')
 
     def __str__(self):
         return '%s' % self.title
