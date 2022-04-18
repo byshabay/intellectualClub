@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from theblog.models import Post
@@ -26,25 +28,28 @@ class ArticleView(DetailView):
 
 # ADD POST
 
-class AddPostView(CreateView):
+class AddPostView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
+    raise_exception = True
 
     template_name = 'theblog/add_post.html'
 
 # EDIT POST
 
 
-class EditPostView(UpdateView):
+class EditPostView(LoginRequiredMixin, UpdateView):
     model = Post
     form_class = PostForm
+    raise_exception = True
 
     template_name = 'theblog/edit_post.html'
 
 # DELETE POST
 
 
-class DeletePostView(DeleteView):
+class DeletePostView(LoginRequiredMixin, DeleteView):
     model = Post
     template_name = 'theblog/delete_post.html'
+    raise_exception = True
     success_url = reverse_lazy('home')

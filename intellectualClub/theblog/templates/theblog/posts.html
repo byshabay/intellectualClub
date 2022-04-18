@@ -15,12 +15,16 @@
 
             | {{post.post_date}}
 
+            {% if user.is_authenticated %}
+
             <small>
                 <a href="{% url 'edit_article' post.pk %}">(Отредактировать)</a>
             </small>
             | <small>
                 <a href="{% url 'delete_article' post.pk %}">(Удалить)</a>
             </small>
+
+            {% endif %}
             <br>
 
         </li>
