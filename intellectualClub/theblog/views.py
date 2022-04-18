@@ -1,9 +1,7 @@
-from dataclasses import field
-from pyexpat import model
-from re import template
 from django.shortcuts import render
+from django.urls import reverse_lazy
 
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from theblog.models import Post
 from theblog.forms import PostForm
@@ -16,6 +14,7 @@ from theblog.forms import PostForm
 class PostsView(ListView):
     model = Post
     template_name = 'theblog/posts.html'
+    ordering = ['-id']
 
 # SIMPLE ARTICLE
 
@@ -40,4 +39,12 @@ class EditPostView(UpdateView):
     model = Post
     form_class = PostForm
 
-    template_name = 'theblog/edit_article.html'
+    template_name = 'theblog/edit_post.html'
+
+# DELETE POST
+
+
+class DeletePostView(DeleteView):
+    model = Post
+    template_name = 'theblog/delete_post.html'
+    success_url = reverse_lazy('home')

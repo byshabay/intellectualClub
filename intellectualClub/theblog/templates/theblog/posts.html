@@ -14,9 +14,11 @@
             | {{ post.author }}
 
             | <small>
-                <a href="{% url 'edit_article' post.pk %}">Отредактировать</a>
+                <a href="{% url 'edit_article' post.pk %}">(Отредактировать)</a>
             </small>
-
+            | <small>
+                <a href="{% url 'delete_article' post.pk %}">(Удалить)</a>
+            </small>
             <br>
 
         </li>
