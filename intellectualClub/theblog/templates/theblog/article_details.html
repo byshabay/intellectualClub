@@ -8,8 +8,8 @@
     </h1>
 
     <h4>
-        Автор: {{ post.author }} | <a href="{% url 'edit_article' post.pk %}">Отредактировать</a> | <small><a
-                href="{% url 'delete_article' post.pk %}">Удалить</a></small>
+        Автор: {{ post.author }} | {{post.post_date}} | <a href="{% url 'edit_article' post.pk %}">Отредактировать</a> |
+        <small><a href="{% url 'delete_article' post.pk %}">Удалить</a></small>
     </h4>
 
     <br>

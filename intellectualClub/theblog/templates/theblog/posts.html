@@ -13,7 +13,9 @@
 
             | {{ post.author }}
 
-            | <small>
+            | {{post.post_date}}
+
+            <small>
                 <a href="{% url 'edit_article' post.pk %}">(Отредактировать)</a>
             </small>
             | <small>

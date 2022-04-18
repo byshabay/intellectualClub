@@ -14,7 +14,7 @@ from theblog.forms import PostForm
 class PostsView(ListView):
     model = Post
     template_name = 'theblog/posts.html'
-    ordering = ['-id']
+    ordering = ['-post_date']
 
 # SIMPLE ARTICLE
 
