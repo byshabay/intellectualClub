@@ -17,18 +17,27 @@
         {% for f in form %}
         <div class="mb-3">
 
-            <label class="form-label" for="{{f.id_for_label}}">{{f.label}}: </label>
-            <div>{{f}}</div>
-
+            {% if not f.is_hidden %}
             <div>
                 {{f.errors}}
             </div>
+            <label class="form-label" for="{{f.id_for_label}}">{{f.label}}: </label>
+            {% endif %}
+            <div>{{f}}</div>
+
+
+
         </div>
         {% endfor %}
         <button class="btn btn-primary" type="submit">Опубликовать</button>
 
     </form>
 
+
+    <script>
+        var post_author = "{{user.id}}"
+        document.getElementById('post_author').value = post_author
+    </script>
 </div>
 
 {% endblock %}

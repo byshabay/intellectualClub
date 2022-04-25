@@ -17,7 +17,7 @@ class PostForm (forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите название записи'}),
-            'author': forms.Select(attrs={'class': 'form-select', 'placeholder': 'Выберите автора'}),
+            'author': forms.TextInput(attrs={'class': 'form-control', 'id': 'post_author', 'type': 'hidden'}),
             'category':  forms.Select(choices=choise_list, attrs={'class': 'form-select', 'placeholder': 'Выберите категорию'}),
             'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Введите содержимое записи'}),
         }
