@@ -9,7 +9,8 @@ menu = [
     {'title': 'О нас', 'url_name': 'about'},
     {'title': 'Добавить событие', 'url_name': 'addevent'},
     {'title': 'Блог', 'url_name': 'posts'},
-    {'title': 'Добавить запись', 'url_name': 'add_post'}
+    {'title': 'Добавить запись', 'url_name': 'add_post'},
+    {'title': 'Добавить категорию', 'url_name': 'add_post_category'}
 
 ]
 

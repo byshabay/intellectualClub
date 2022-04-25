@@ -5,6 +5,8 @@
 
 <div class="container">
 
+    {% if user.id == post.author.id %}
+
     <form method="POST" class="col-lg-4 form-group">
         {% csrf_token %}
         {{ form.as_p }}
@@ -12,6 +14,14 @@
         <button class="btn btn-primary" type="submit">Отредактировать</button>
     </form>
 
+
+    {% else %}
+
+    <h2>
+        Упс...Кажется эту запись создали не вы...
+    </h2>
+
+    {% endif %}
 
 </div>
 

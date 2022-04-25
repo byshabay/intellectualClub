@@ -8,13 +8,17 @@
     </h1>
 
     <h4>
-        Автор: {{ post.author }} | {{post.post_date}}
-
+        Автор: {{ post.author }} | {{post.post_date}} | <a href="{% url 'post_category' post.category %}">
+            {{post.category}}
+        </a>
         {% if user.is_authenticated %}
+
+        {% if user.id == post.author.id %}
 
         | <a href="{% url 'edit_article' post.pk %}">Отредактировать</a> |
         <small><a href="{% url 'delete_article' post.pk %}">Удалить</a></small>
 
+        {% endif %}
         {% endif %}
     </h4>
 

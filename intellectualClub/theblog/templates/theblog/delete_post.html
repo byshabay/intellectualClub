@@ -3,6 +3,7 @@
 {% block content %}
 
 <div class="container">
+    {% if user.id == post.author.id %}
     <form class="form-group col-lg-10" method="POST">
 
         {% csrf_token %}
@@ -14,6 +15,14 @@
         <button class="btn btn-primary" type="submit">Удалить</button>
 
     </form>
+
+    {% else %}
+
+    <h2>
+        Упс...Кажется эту запись создали не вы...
+    </h2>
+
+    {% endif %}
 </div>
 
 {% endblock %}

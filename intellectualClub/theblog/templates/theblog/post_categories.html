@@ -3,8 +3,15 @@
 {% block content %}
 
 <div class="container">
+
+    <h1>
+        Категория "{{cats}}"
+    </h1>
+
+    {% if category_posts %}
+
     <ul>
-        {% for post in object_list %}
+        {% for post in category_posts %}
 
         <li>
             <a href="{% url 'article_detail' post.pk %}">
@@ -15,18 +22,22 @@
 
             | {{post.post_date}}
 
-            |<a href="{% url 'post_category' post.category %}"> {{post.category}} </a>
-
             {% if user.is_authenticated %}
 
-            {% if user.id == post.author.id %}
+            {if user.id == post.author.id}
 
             <small>
-                | <a href="{% url 'edit_article' post.pk %}">(Отредактировать)</a>
+                <a href="{% url 'edit_article' post.pk %}">(Отредактировать)</a>
             </small>
             | <small>
                 <a href="{% url 'delete_article' post.pk %}">(Удалить)</a>
             </small>
+
+            {% else %}
+
+            <h2>
+                Упс...Кажется эту запись создали не вы...
+            </h2>
 
             {% endif %}
 
@@ -36,7 +47,13 @@
         </li>
 
         {% endfor %}
+        {% else %}
+        <h2>
+            Такой страницы не существует
+        </h2>
+        {% endif %}
     </ul>
+
 </div>
 
 {% endblock %}
