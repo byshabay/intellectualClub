@@ -15,6 +15,7 @@ urlpatterns = [
          name='add_post_category'),
     path('post_category/<str:cats>/',
          views.PostCategoryView, name='post_category'),
+    path('like/<int:pk>', views.LikeView, name='like_post'),
 
 
 ]
