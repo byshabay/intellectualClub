@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from datetime import datetime, date
+from ckeditor.fields import RichTextField
 # POST MODEL START
 
 
@@ -10,7 +11,8 @@ class Post(models.Model):
     title = models.CharField('Название', max_length=255)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, verbose_name='Автор')
-    body = models.TextField('Содержимое')
+
+    body = RichTextField(blank=True, null=True)
     post_date = models.DateField('Дата добавления', auto_now_add=True)
     category = models.CharField(max_length=255, default='test')
     likes = models.ManyToManyField(User, related_name='blog_post')
