@@ -13,6 +13,7 @@ class Post(models.Model):
         User, on_delete=models.CASCADE, verbose_name='Автор')
 
     body = RichTextField(blank=True, null=True)
+    snippet = models.CharField(max_length=255, default='Test')
     post_date = models.DateField('Дата добавления', auto_now_add=True)
     category = models.CharField(max_length=255, default='test')
     likes = models.ManyToManyField(User, related_name='blog_post')
