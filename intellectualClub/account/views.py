@@ -95,7 +95,6 @@ class ShowUserPageView(DetailView):
     template_name = 'account/user_profile.html'
 
     def get_context_data(self, *args, **kwargs):
-        users = Profile.objects.all()
         context = super(ShowUserPageView, self).get_context_data(
             *args, **kwargs)
 
