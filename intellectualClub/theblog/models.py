@@ -9,6 +9,8 @@ from ckeditor.fields import RichTextField
 
 class Post(models.Model):
     title = models.CharField('Название', max_length=255)
+    header_image = models.ImageField(
+        null=True, blank=True, upload_to="photos/%Y/%m/%d/")
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, verbose_name='Автор')
 

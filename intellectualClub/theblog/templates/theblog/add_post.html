@@ -7,7 +7,7 @@
         Добавить новую запись
     </h1>
     <br>
-    <form class="form-group col-lg-4" method="POST">
+    <form class="form-group col-lg-4" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
         {{ form.media }}

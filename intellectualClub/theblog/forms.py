@@ -13,7 +13,8 @@ class PostForm (forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ['title', 'author', 'category', 'body', 'snippet']
+        fields = ['title', 'header_image',
+                  'author', 'category', 'body', 'snippet']
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите название записи'}),
