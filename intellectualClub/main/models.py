@@ -1,6 +1,5 @@
-from re import T
-from tkinter import N
-from tkinter.messagebox import NO
+from time import strftime
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
@@ -13,6 +12,7 @@ class Event(models.Model):
         max_digits=10, decimal_places=0, default=0)
     discount = models.IntegerField(blank=True, null=True, default=0)
     slug = models.SlugField(unique=True, db_index=True, verbose_name='URL')
+    author = models.ForeignKey(User, on_delete=models.PROTECT, default=1)
     short_description = models.TextField(
         'Краткое описание', blank=True, null=True, default=None)
     description = models.TextField('Описание')
@@ -68,7 +68,7 @@ class EventSchedule(models.Model):
     status = models.BooleanField('Доступная дата / нет', default=True)
 
     def __str__(self):
-        return str(self.id)
+        return "%s" % self.date.strftime("Дата: %x  Время: %H:%M")
 
     class Meta:
         verbose_name = "Расписание событий"

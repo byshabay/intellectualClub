@@ -26,57 +26,20 @@
             </h1>
 
             <h4>
+                {% if event.discount %}
+
                 Цена: {{event.price}} рублей
+                Скидка: {{ event.discount }}%
+
+                {% else %}
+                Цена: {{event.price}} рублей
+                {% endif %}
+
             </h4>
             <p>
                 {{event.description | linebreaks}}
             </p>
-
-            <!-- SCHEDULE START -->
-
-            {% if schedule %}
-
-            <a class="btn btn-primary" href="#schedule">Купить билет</a>
-            <br>
-            <form id="schedule" action="#">
-                <h4>
-                    Расписание:
-                </h4>
-                {% for s in schedule %}
-                <input class="form-check-input" type="radio" name="availableDate" id="availableDate{{forloop.counter}}">
-                <label class="form-check-label" for="availableDate{{forloop.counter}}">{{s.date}}</label>
-                <br>
-                <!-- SCHEDULE END -->
-
-                {%endfor%}
-
-                {% verbatim %}
-
-                <br>
-
-                <div id="counter">
-                    <div>Кол-во:</div>
-                    <input type="number" v-model="counter">
-                    <div class="btn btn-primary" v-if="counter < 10" @click='counterPlus'>Добавить</div>
-                    <div class="btn btn-primary" v-if="counter > 0" @click='counterMinus'>Удалить</div>
-                </div>
-
-                <br>
-
-
-                {% endverbatim %}
-                <input class="form-control" type="text" placeholder="Имя">
-                <br>
-                <input class="form-control" type="text" placeholder="Email">
-                <br>
-                <button class="btn btn-primary" type="submit">Купить</button>
-
-            </form>
-
-            {% endif %}
-
-
-
+            <a class="btn btn-primary" href="{% url 'creating_oreder' event.id %}">Купить</a>
         </div>
     </div>
 </div>

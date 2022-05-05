@@ -1,0 +1,67 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="container">
+
+    <div>
+        Событие № {{event.pk}}
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+
+        <div>
+            {{form.non_field_errors }}
+        </div>
+
+        {% for f in form %}
+
+
+        <div class="mb-3">
+            {% if not f.is_hidden %}
+            <label class="form-label" for="{{f.id_for_label}}">{{f.label}}: </label>
+
+            {% endif %}
+            <div>{{f}}</div>
+
+            <div>
+                {{f.errors}}
+            </div>
+        </div>
+
+        {% endfor %}
+
+        <button class="btn btn-primary" type="submit">Купить</button>
+    </form>
+
+    {% if user %}
+    <script>
+        var customer_email = "{{user.email}}"
+        document.getElementById('customer_email').value = customer_email
+
+        var customer_name = "{{user.first_name}}"
+        document.getElementById('customer_name').value = customer_name
+    </script>
+    {% endif %}
+
+    {% if event.discount %}
+
+    <script>
+        var old_price = "{{event.price}}"
+        var discount = "{{event.discount}}"
+        var new_price = "{{event.price}}:{{event.discount}}"
+    </script>
+
+    {% endif %}
+
+    <script>
+        var total_price = "{{event.price}}"
+        document.getElementById('total_price').value = total_price
+
+        var event = "{{event.id}}"
+        document.getElementById('event_id').value = event
+    </script>
+</div>
+
+
+
+{% endblock %}

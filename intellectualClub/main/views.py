@@ -1,15 +1,26 @@
 
+from urllib import request
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from rest_framework.viewsets import ModelViewSet
+from django.http import Http404
+from django.views.generic.edit import FormView
 
 from .forms import *
+from django.urls import reverse_lazy
+
+from orders.forms import PreEventOreder
 from .models import *
-from .utils import *
+from .models import *
 from .serializers import ShowEventSerializer
+from .utils import *
+
+from django.core.mail import send_mail, BadHeaderError
+from intellectualClub.settings import EMAIL_HOST_USER
+from django.http import HttpResponse, HttpResponseRedirect
 
 # HOME PAGE
 
@@ -40,8 +51,9 @@ def about(request):
 
 # SHOW EVENT CART
 
-class ShowEventCart(DataMixin, DetailView):
+class ShowEventCart(DataMixin, DetailView, FormView):
     model = Event
+    form_class = PreEventOreder
     template_name = 'main/event.html'
     slug_url_kwarg = 'event_slug'
     context_object_name = 'event'
