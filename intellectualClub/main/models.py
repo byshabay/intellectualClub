@@ -64,7 +64,7 @@ class Category(models.Model):
 class EventSchedule(models.Model):
     event = models.ForeignKey(
         'Event', on_delete=models.PROTECT, verbose_name='Событие')
-    date = models.DateTimeField('Дата и время проведения')
+    date = models.DateTimeField('Дата и время проведения', unique=True)
     status = models.BooleanField('Доступная дата / нет', default=True)
 
     def __str__(self):

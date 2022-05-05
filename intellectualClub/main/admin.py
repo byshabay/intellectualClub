@@ -7,6 +7,11 @@ class EventImageInline(admin.TabularInline):
     extra = 0
 
 
+class EventScheduleInline(admin.TabularInline):
+    model = EventSchedule
+    extra = 0
+
+
 class EventAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'time_create', 'photo', 'is_published')
     list_display_links = ('id', 'title')
@@ -14,7 +19,7 @@ class EventAdmin(admin.ModelAdmin):
     list_editable = ('is_published',)
     list_filter = ('is_published', 'time_create')
     prepopulated_fields = {'slug': ("title",)}
-    inlines = [EventImageInline]
+    inlines = [EventImageInline, EventScheduleInline]
 
 
 class CategoryAdmin(admin.ModelAdmin):
