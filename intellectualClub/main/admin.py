@@ -24,7 +24,7 @@ class EventAdmin(TranslationAdmin):
     inlines = [EventImageInline, EventScheduleInline]
 
 
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(TranslationAdmin):
     list_display = ('id', 'name')
     list_display_links = ('id', 'name')
     search_fields = ('name',)
