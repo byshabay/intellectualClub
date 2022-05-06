@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import *
 
+from modeltranslation.admin import TranslationAdmin
+
 
 class EventImageInline(admin.TabularInline):
     model = EventImage
@@ -12,7 +14,7 @@ class EventScheduleInline(admin.TabularInline):
     extra = 0
 
 
-class EventAdmin(admin.ModelAdmin):
+class EventAdmin(TranslationAdmin):
     list_display = ('id', 'title', 'time_create', 'photo', 'is_published')
     list_display_links = ('id', 'title')
     search_fields = ('title', 'description')
