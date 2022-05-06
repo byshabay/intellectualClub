@@ -1,0 +1,79 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-06 15:01+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\main\templates\main\about.html:9
+msgid "О нас"
+msgstr "À propos de nous"
+
+#: .\main\templates\main\addevent.html:7
+msgid "Добавить событие"
+msgstr "Ajouter un évènement"
+
+#: .\main\templates\main\addevent.html:28
+msgid "Сохранить"
+msgstr "Sauver"
+
+#: .\main\templates\main\event.html:32 .\main\templates\main\event.html:36
+msgid "Цена"
+msgstr "Prix"
+
+#: .\main\templates\main\event.html:32 .\main\templates\main\event.html:36
+msgid "рублей"
+msgstr "roubles"
+
+#: .\main\templates\main\event.html:43
+msgid "Купить"
+msgstr "Acheter"
+
+#: .\main\templates\main\index.html:14
+msgid "События"
+msgstr "Événements"
+
+#: .\main\templates\main\index.html:17
+msgid "Все категории"
+msgstr "Toutes catégories"
+
+#: .\main\templates\main\index.html:58
+msgid "Категория"
+msgstr "Catégorie"
+
+#: .\main\templates\main\index.html:61
+msgid "Дата"
+msgstr "la date"
+
+#: .\main\templates\main\index.html:71
+msgid "Подробнее"
+msgstr "Suite"
+
+#: .\main\templates\main\navbar.html:51
+msgid "Добро пожаловать"
+msgstr "Suite"
+
+#: .\main\templates\main\navbar.html:52
+msgid "Выйти"
+msgstr "Se déconnecter"
+
+#: .\main\templates\main\navbar.html:56
+msgid "Регистрация"
+msgstr "Inscription"
+
+#: .\main\templates\main\navbar.html:60
+msgid "Вход"
+msgstr "Entrée"

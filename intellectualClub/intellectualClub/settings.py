@@ -132,6 +132,8 @@ def gettext(s): return s
 LANGUAGES = (
     ('ru', gettext('Russia')),
     ('en', gettext('English')),
+    ('fr', gettext('France')),
+
 )
 
 LOCALE_PATHS = [
