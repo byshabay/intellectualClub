@@ -147,20 +147,20 @@ LOGIN_URL = '/login'
 
 # EMAIL SETTINGS
 
-RECIPIENTS_EMAIL = ['lala2011lala2011@mail.ru']
+RECIPIENTS_EMAIL = ['shabbaykina99@gmail.com']
 DEFAULT_FROM_EMAIL = 'shabbaykina@mail.ru'
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-# EMAIL_HOST = 'localhost'
-# EMAIL_PORT = '1025'
-# EMAIL_HOST_USER = ''
-# EMAIL_HOST_PASSWORD = ''
-# EMAI_USE_TLS = False
-# EMAIL_USE_SSL = False
-
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'shabbaykina99@gmail.com'
-EMAIL_HOST_PASSWORD = 'ivgzwnyswxbnczuv'
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = '1025'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAI_USE_TLS = False
+EMAIL_USE_SSL = False
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'shabbaykina99@gmail.com'
+# EMAIL_HOST_PASSWORD = 'ivgzwnyswxbnczuv'
