@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
 
-    <h1>Добавить событие</h1>
+    <h1>{% trans 'Добавить событие' %}</h1>
 
     <form class="col-lg-4" action="{% url 'addevent' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -24,7 +24,7 @@
         </div>
         {% endfor %}
 
-        <button class="btn btn-primary" type="submit">Сохранить</button>
+        <button class="btn btn-primary" type="submit">{% trans 'Сохранить' %}</button>
 
     </form>
 </div>

@@ -28,18 +28,18 @@
             <h4>
                 {% if event.discount %}
 
-                Цена: {{event.price}} рублей
+                {% trans 'Цена' %}: {{event.price}} {% trans 'рублей'%}
                 Скидка: {{ event.discount }}%
 
                 {% else %}
-                Цена: {{event.price}} рублей
+                {% trans 'Цена'}: {{event.price}} {% trans 'рублей'%}
                 {% endif %}
 
             </h4>
             <p>
                 {{event.description | linebreaks}}
             </p>
-            <a class="btn btn-primary" href="{% url 'creating_oreder' event.id %}">Купить</a>
+            <a class="btn btn-primary" href="{% url 'creating_oreder' event.id %}">{% trans 'Купить'%}</a>
         </div>
     </div>
 </div>

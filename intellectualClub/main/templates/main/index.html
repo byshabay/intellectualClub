@@ -2,6 +2,7 @@
 
 {% load main_tags %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 <img class="img-fluid" src="{% static 'main/images/bkg.jpg' %}" style="width: 100%;">
@@ -10,10 +11,10 @@
     <div class="events_type">
 
         <h1 class="common_h2">
-            События
+            {% trans 'События'%}
         </h1>
         <h2>
-            Все категории
+            {% trans 'Все категории'%}
         </h2>
         <div class="events_type__list">
 
@@ -54,10 +55,10 @@
 
                             <h4>{{e.title|truncatechars_html:10}}</h4>
                             <p>
-                                Категория: {{ e.cat }}
+                                {% trans 'Категория'%}: {{ e.cat }}
                             </p>
                             <p>
-                                Дата: {{ e.time_upload }}
+                                {% trans 'Дата'%}: {{ e.time_upload }}
                             </p>
 
                             <p>{{e.short_description|linebreaks }}</p>
@@ -67,7 +68,7 @@
                             </div>
                             <br>
                             <div class="add-to-card-btn">
-                                <a class="btn btn-success" href="{{ e.get_absolute_url }}">Добавить в корзину</a>
+                                <a class="btn btn-success" href="{{ e.get_absolute_url }}">{% trans 'Подробнее'%}</a>
                             </div>
                         </div>
                     </div>
