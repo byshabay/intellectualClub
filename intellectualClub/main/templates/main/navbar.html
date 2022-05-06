@@ -48,12 +48,12 @@
                 {% if request.user.is_authenticated %}
 
                 <li class="nav-item">
-                    Добро пожаловать, <a href="{% url 'edit_profile' user.pk  %}">{{ user.username }}</a> <a
-                        class="btn btn-dark" href="{% url 'logout' %}">Выйти</a>
+                    {% trans 'Добро пожаловать' %}, <a href="{% url 'edit_profile' user.pk  %}">{{ user.username }}</a>
+                    <a class="btn btn-dark" href="{% url 'logout' %}"> {% trans 'Выйти' %}</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}"> Регистрация</a>
+                    <a class="nav-link" href="{% url 'register' %}"> {% translate "Регистрация" %}</a>
                 </li>
 
                 <li class="nav-item">
