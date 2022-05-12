@@ -74,7 +74,6 @@ class EventViewSet(ModelViewSet):
     serializer_class = ShowEventSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = EventCategoryFilter
-    # filterset_fields = ['cat', ]
 
     # @action(detail=True, methods=['post'])
     # def get_category(self, request, **kwargs):

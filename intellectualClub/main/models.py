@@ -27,7 +27,7 @@ class Event(models.Model):
                             on_delete=models.PROTECT, verbose_name='Категория')
 
     def __str__(self):
-        return "%s %s" % (self.price, self.title)
+        return "%s" % (self.title)
 
     class Meta:
         verbose_name = "Событие"
