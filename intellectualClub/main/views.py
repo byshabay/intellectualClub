@@ -17,6 +17,7 @@ from .models import *
 from .models import *
 from .serializers import ShowEventSerializer
 from .utils import *
+from .service import EventCategoryFilter
 
 from django.core.mail import send_mail, BadHeaderError
 from intellectualClub.settings import EMAIL_HOST_USER
@@ -72,7 +73,8 @@ class EventViewSet(ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = ShowEventSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['cat', ]
+    filterset_class = EventCategoryFilter
+    # filterset_fields = ['cat', ]
 
     # @action(detail=True, methods=['post'])
     # def get_category(self, request, **kwargs):

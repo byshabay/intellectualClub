@@ -7,4 +7,4 @@ class EventCategoryFilter(filters.FilterSet):
 
     class Meta:
         model = Event
-        fields = ['cat_id', ]
+        fields = ['cat', 'cat__is_active', 'is_published']
