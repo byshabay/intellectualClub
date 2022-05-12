@@ -1,4 +1,5 @@
 {% extends 'main/base.html' %}
+{% load i18n %}
 
 {% block content %}
 
@@ -12,14 +13,14 @@
         {{ form.media }}
         {{ form.as_p }}
 
-        <button class="btn btn-primary" type="submit">Отредактировать</button>
+        <button class="btn btn-primary" type="submit">{% trans 'Отредактировать' %}</button>
     </form>
 
 
     {% else %}
 
     <h2>
-        Упс...Кажется эту запись создали не вы...
+        {% trans 'Упс...Кажется эту запись создали не вы...' %}
     </h2>
 
     {% endif %}

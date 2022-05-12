@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-06 15:01+0300\n"
+"POT-Creation-Date: 2022-05-11 12:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,79 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: .\account\templates\account\change-password.html:9
+msgid "Смена пароля"
+msgstr "Changer le mot de passe"
+
+#: .\account\templates\account\change-password.html:13
+msgid "Пароль не должен быть слишком похож на другую вашу личную информацию."
+msgstr ""
+"Le mot de passe ne doit pas être trop similaire à vos autres informations "
+"personnelles."
+
+#: .\account\templates\account\change-password.html:14
+msgid "Ваш пароль должен содержать как минимум 8 символов."
+msgstr "Votre mot de passe doit contenir au moins 8 caractères."
+
+#: .\account\templates\account\change-password.html:15
+msgid "Пароль не должен быть слишком простым и распространенным."
+msgstr "Le mot de passe ne doit pas être trop simple et commun."
+
+#: .\account\templates\account\change-password.html:16
+msgid "Пароль не может состоять только из цифр."
+msgstr "Le mot de passe ne peut pas être composé uniquement de chiffres."
+
+#: .\account\templates\account\change-password.html:24
+#, fuzzy
+#| msgid "Сохранить"
+msgid "Сохранить пароль"
+msgstr "Sauver"
+
+#: .\account\templates\account\edit_profile.html:9
+msgid "Редактирование аккаунта"
+msgstr "Modification d'un compte"
+
+#: .\account\templates\account\edit_profile.html:17
+#, fuzzy
+#| msgid "Добавить событие"
+msgid "Изменить изображение"
+msgstr "Ajouter un évènement"
+
+#: .\account\templates\account\edit_profile.html:22
+#, fuzzy
+#| msgid "Добавить событие"
+msgid "Добавить изображение"
+msgstr "Ajouter un évènement"
+
+#: .\account\templates\account\edit_profile.html:31
+#: .\account\templates\account\edit_profile_image.html:28
+#: .\main\templates\main\addevent.html:28
+msgid "Сохранить"
+msgstr "Sauver"
+
+#: .\account\templates\account\edit_profile_image.html:9
+msgid "Редактирование изображения пользователя"
+msgstr "Modification d'une image utilisateur"
+
+#: .\account\templates\account\password_success.html:8
+msgid "Ваш пароль успешно изменен"
+msgstr "Votre mot de passe a été changé avec succès"
+
+#: .\account\templates\account\password_success.html:10
+msgid "Перейти на главную страницу"
+msgstr "Aller à la page d'accueil"
+
+#: .\account\templates\account\register.html:27
+#: .\main\templates\main\navbar.html:56
+msgid "Регистрация"
+msgstr "Inscription"
+
+#: .\account\templates\account\user_profile.html:9
+#, fuzzy
+#| msgid "Добро пожаловать"
+msgid "Аккаунт пользователя"
+msgstr "Suite"
+
 #: .\main\templates\main\about.html:9
 msgid "О нас"
 msgstr "À propos de nous"
@@ -25,10 +98,6 @@ msgstr "À propos de nous"
 #: .\main\templates\main\addevent.html:7
 msgid "Добавить событие"
 msgstr "Ajouter un évènement"
-
-#: .\main\templates\main\addevent.html:28
-msgid "Сохранить"
-msgstr "Sauver"
 
 #: .\main\templates\main\event.html:32 .\main\templates\main\event.html:36
 msgid "Цена"
@@ -39,6 +108,7 @@ msgid "рублей"
 msgstr "roubles"
 
 #: .\main\templates\main\event.html:43
+#: .\orders\templates\orders\creating_order.html:34
 msgid "Купить"
 msgstr "Acheter"
 
@@ -51,6 +121,7 @@ msgid "Все категории"
 msgstr "Toutes catégories"
 
 #: .\main\templates\main\index.html:58
+#: .\theblog\templates\theblog\post_categories.html:9
 msgid "Категория"
 msgstr "Catégorie"
 
@@ -70,10 +141,107 @@ msgstr "Suite"
 msgid "Выйти"
 msgstr "Se déconnecter"
 
-#: .\main\templates\main\navbar.html:56
-msgid "Регистрация"
-msgstr "Inscription"
-
 #: .\main\templates\main\navbar.html:60
 msgid "Вход"
 msgstr "Entrée"
+
+#: .\orders\templates\orders\created_order.html:7
+msgid "Спасибо за заказ!"
+msgstr "Merci pour votre commande!"
+
+#: .\orders\templates\orders\created_order.html:9
+msgid "Наш менеджер свяжется с вами по указанному адресу"
+msgstr "Notre responsable vous contactera à l'adresse indiquée"
+
+#: .\orders\templates\orders\created_order.html:12
+msgid "Вернуться на главную"
+msgstr "Revenez à la page principale"
+
+#: .\orders\templates\orders\creating_order.html:8
+#, fuzzy
+#| msgid "События"
+msgid "Событие"
+msgstr "Événements"
+
+#: .\theblog\templates\theblog\add_category.html:9
+#, fuzzy
+#| msgid "Добавить событие"
+msgid "Добавить новую категорию"
+msgstr "Ajouter un évènement"
+
+#: .\theblog\templates\theblog\add_category.html:32
+#, fuzzy
+#| msgid "Добавить событие"
+msgid "Добавить категорию"
+msgstr "Ajouter un évènement"
+
+#: .\theblog\templates\theblog\add_post.html:8
+#, fuzzy
+#| msgid "Добавить событие"
+msgid "Добавить новую запись"
+msgstr "Ajouter un évènement"
+
+#: .\theblog\templates\theblog\add_post.html:35
+#, fuzzy
+#| msgid "Добро пожаловать"
+msgid "Опубликовать"
+msgstr "Suite"
+
+#: .\theblog\templates\theblog\article_details.html:13
+msgid "Автор"
+msgstr "Auteur"
+
+#: .\theblog\templates\theblog\article_details.html:20
+#: .\theblog\templates\theblog\edit_post.html:16
+#: .\theblog\templates\theblog\post_categories.html:31
+#: .\theblog\templates\theblog\posts.html:26
+msgid "Отредактировать"
+msgstr "Modifier"
+
+#: .\theblog\templates\theblog\article_details.html:21
+#: .\theblog\templates\theblog\delete_post.html:16
+#: .\theblog\templates\theblog\post_categories.html:34
+#: .\theblog\templates\theblog\posts.html:29
+msgid "Удалить"
+msgstr "Supprimer"
+
+#: .\theblog\templates\theblog\article_details.html:48
+msgid "Мне не нравится"
+msgstr "Je n'aime pas"
+
+#: .\theblog\templates\theblog\article_details.html:51
+msgid "Мне нравится"
+msgstr "J'aime"
+
+#: .\theblog\templates\theblog\article_details.html:56
+msgid "Войти"
+msgstr "Entrer"
+
+#: .\theblog\templates\theblog\article_details.html:56
+#, fuzzy
+#| msgid "Сохранить"
+msgid "чтобы оценить запись"
+msgstr "Sauver"
+
+#: .\theblog\templates\theblog\article_details.html:78
+msgid "Коротко об авторе"
+msgstr "En bref sur l'auteur"
+
+#: .\theblog\templates\theblog\article_details.html:81
+#, fuzzy
+#| msgid "Коротко об авторе"
+msgid "Профиль автора"
+msgstr "En bref sur l'auteur"
+
+#: .\theblog\templates\theblog\delete_post.html:12
+msgid "Вы уверены, что хотите удалить пост"
+msgstr "Êtes-vous sûr de vouloir supprimer le message"
+
+#: .\theblog\templates\theblog\edit_post.html:23
+#: .\theblog\templates\theblog\post_categories.html:40
+msgid "Упс...Кажется эту запись создали не вы..."
+msgstr "Oups... Il semble que vous n'ayez pas créé ce message..."
+
+#: .\theblog\templates\theblog\post_categories.html:53
+msgid "Такой страницы не существует"
+msgstr "Cette page n'existe pas"

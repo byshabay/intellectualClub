@@ -1,11 +1,12 @@
 {% extends 'main/base.html' %}
 
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 
 <div class="container">
-    <h1>Аккаунт пользователя</h1>
+    <h1>{% trans 'Аккаунт пользователя' %}</h1>
 
 
     {{ page_user }}

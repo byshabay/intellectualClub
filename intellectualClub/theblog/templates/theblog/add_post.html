@@ -1,10 +1,11 @@
 {% extends 'main/base.html' %}
+{% load i18n %}
 
 {% block content %}
 
 <div class="container">
     <h1>
-        Добавить новую запись
+        {% trans 'Добавить новую запись' %}
     </h1>
     <br>
     <form class="form-group col-lg-4" method="POST" enctype="multipart/form-data">
@@ -31,7 +32,7 @@
 
         </div>
         {% endfor %}
-        <button class="btn btn-primary" type="submit">Опубликовать</button>
+        <button class="btn btn-primary" type="submit">{% trans 'Опубликовать' %}</button>
 
     </form>
 

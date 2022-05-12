@@ -21,6 +21,8 @@ class Event(models.Model):
     time_create = models.DateTimeField('Дата создания', auto_now_add=True)
     time_upload = models.DateTimeField('Дата изменения', auto_now=True)
     is_published = models.BooleanField('Публикация', default=True)
+    is_popular = models.BooleanField(default=False)
+    is_promo = models.BooleanField(default=False)
     cat = models.ForeignKey('Category',
                             on_delete=models.PROTECT, verbose_name='Категория')
 

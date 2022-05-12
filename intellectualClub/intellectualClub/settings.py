@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django_filters',
     'account.apps.AccountConfig',
     'theblog.apps.TheblogConfig',
-    'ckeditor'
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -182,3 +182,8 @@ EMAIL_USE_SSL = False
 # EMAIL_PORT = 587
 # EMAIL_HOST_USER = 'shabbaykina99@gmail.com'
 # EMAIL_HOST_PASSWORD = 'ivgzwnyswxbnczuv'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}

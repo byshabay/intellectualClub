@@ -1,5 +1,4 @@
-
-from urllib import request
+from rest_framework.decorators import action
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import ListView
@@ -8,6 +7,7 @@ from django.views.generic.edit import CreateView
 from rest_framework.viewsets import ModelViewSet
 from django.http import Http404
 from django.views.generic.edit import FormView
+from django_filters.rest_framework import DjangoFilterBackend
 
 from .forms import *
 from django.urls import reverse_lazy
@@ -65,15 +65,19 @@ class ShowEventCart(DataMixin, DetailView, FormView):
 
         return dict(list(context.items()) + list(c_def.items()))
 
+# Event List JSON
 
-class Test(ModelViewSet):
+
+class EventViewSet(ModelViewSet):
     queryset = Event.objects.all()
     serializer_class = ShowEventSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['cat', ]
 
-
-def test(request):
-    return render(request, 'main/test.html')
-
+    # @action(detail=True, methods=['post'])
+    # def get_category(self, request, **kwargs):
+    #     category = self.kwargs['cat']
+    #     return Event.objects.filter(cat__id == category)
 
 # CATEGORY
 

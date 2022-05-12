@@ -1,4 +1,5 @@
 {% extends 'main/base.html' %}
+{% load i18n %}
 
 {% block content %}
 
@@ -8,11 +9,11 @@
 
         {% csrf_token %}
 
-        <h1>Вы уверены, что хотите удалить пост: "{{ post.title }}" ?</h1>
+        <h1>{% trans 'Вы уверены, что хотите удалить пост' %}: "{{ post.title }}" ?</h1>
         <br>
         <br>
 
-        <button class="btn btn-primary" type="submit">Удалить</button>
+        <button class="btn btn-primary" type="submit">{% trans 'Удалить' %}</button>
 
     </form>
 

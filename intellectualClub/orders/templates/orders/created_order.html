@@ -1,14 +1,15 @@
 {% extends 'main/base.html' %}
+{% load i18n %}
 
 {% block content %}
 
 <div class="container">
-    <h1>Спасибо за заказ!</h1>
+    <h1>{% trans 'Спасибо за заказ!' %}</h1>
     <p>
-        Наш менеджер свяжется с вами по указанному адресу
+        {% trans 'Наш менеджер свяжется с вами по указанному адресу' %}
     </p>
 
-    <a href="{% url 'home' %}" class="btn btn-primary"> Вернуться на главную</a>
+    <a href="{% url 'home' %}" class="btn btn-primary"> {% trans 'Вернуться на главную' %}</a>
 </div>
 
 

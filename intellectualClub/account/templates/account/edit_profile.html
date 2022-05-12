@@ -1,11 +1,12 @@
 {% extends 'main/base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 <div class="container">
 
     <h1>
-        Редактирование аккаунта
+        {% trans 'Редактирование аккаунта' %}
     </h1>
 
 
@@ -13,12 +14,12 @@
     <img width='100px' height="100px" class="rounded-circle border border-success"
         src="{{user.profile.profile_pic.url}}" alt="">
 
-    <a href="{% url 'edit_profile_image' user.profile.pk %}">Изменить изображение</a>
+    <a href="{% url 'edit_profile_image' user.profile.pk %}">{% trans 'Изменить изображение' %}</a>
 
     {% else %}
     <img width='100px' height="100px" class="rounded-circle border border-success"
         src="{% static 'account/images/account_default.png' %}" alt="">
-    <a href="{% url 'edit_profile_image' user.pk %}">Добавить изображение</a>
+    <a href="{% url 'edit_profile_image' user.pk %}">{% trans 'Добавить изображение' %}</a>
     {% endif %}
     {{user.profile.bio}}
 
@@ -27,7 +28,7 @@
 
         {{form.as_p}}
 
-        <button class="btn btn-primary" type="submit">Сохранить</button>
+        <button class="btn btn-primary" type="submit">{% trans 'Сохранить' %}</button>
     </form>
 
 </div>

@@ -1,4 +1,5 @@
 {% extends 'main/base.html' %}
+{% load i18n %}
 
 {% block content %}
 
@@ -22,10 +23,10 @@
             {% if user.id == post.author.id %}
 
             <small>
-                | <a href="{% url 'edit_article' post.pk %}">(Отредактировать)</a>
+                | <a href="{% url 'edit_article' post.pk %}">({% trans 'Отредактировать' %})</a>
             </small>
             | <small>
-                <a href="{% url 'delete_article' post.pk %}">(Удалить)</a>
+                <a href="{% url 'delete_article' post.pk %}">({% trans 'Удалить' %})</a>
             </small>
 
             {% endif %}

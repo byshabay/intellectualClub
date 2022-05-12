@@ -1,11 +1,12 @@
 {% extends 'main/base.html' %}
+{% load i18n %}
 
 {% block content %}
 
 <div class="container">
 
     <h1>
-        Добавить новую категорию
+        {% trans 'Добавить новую категорию' %}
     </h1>
 
     <br>
@@ -28,7 +29,7 @@
             </div>
         </div>
         {% endfor %}
-        <button class="btn btn-primary" type="submit">Добавить категорию</button>
+        <button class="btn btn-primary" type="submit">{% trans 'Добавить категорию' %}</button>
     </form>
 
 </div>

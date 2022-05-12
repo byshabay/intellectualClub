@@ -1,5 +1,6 @@
 from django.contrib import admin
 from orders.models import *
+from modeltranslation.admin import TranslationAdmin
 
 # 1.INLINES START
 
@@ -13,7 +14,7 @@ from orders.models import *
 # 2.STATUS START
 
 
-class StatusAdmin(admin.ModelAdmin):
+class StatusAdmin(TranslationAdmin):
     list_display = [field.name for field in Status._meta.fields]
 
     class Meta:

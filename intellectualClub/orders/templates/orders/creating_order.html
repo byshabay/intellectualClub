@@ -1,10 +1,11 @@
 {% extends 'main/base.html' %}
+{% load i18n %}
 
 {% block content %}
 <div class="container">
 
     <div>
-        Событие № {{event.pk}}
+        {% trans 'Событие' %} № {{event.pk}}
     </div>
     <form method="POST">
         {% csrf_token %}
@@ -30,7 +31,7 @@
 
         {% endfor %}
 
-        <button class="btn btn-primary" type="submit">Купить</button>
+        <button class="btn btn-primary" type="submit">{% trans 'Купить' %}</button>
     </form>
 
     {% if user %}
