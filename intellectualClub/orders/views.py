@@ -1,13 +1,28 @@
-from django.shortcuts import redirect, render
-from orders.models import *
-from orders.forms import *
-from django.urls import reverse_lazy
-from django.shortcuts import render
-
-from django.core.mail import send_mail, BadHeaderError
+from django.core.mail import BadHeaderError, send_mail
 from django.http import HttpResponse
-from intellectualClub.settings import RECIPIENTS_EMAIL, DEFAULT_FROM_EMAIL
+from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
+from intellectualClub.settings import DEFAULT_FROM_EMAIL, RECIPIENTS_EMAIL
+from rest_framework.viewsets import ModelViewSet
+from rest_framework import generics, mixins
+from orders.forms import *
+from orders.models import *
+from rest_framework.generics import get_object_or_404
+from rest_framework.generics import CreateAPIView, ListAPIView
+from .serializers import CreateEventOrderSerializer
+
 # Create your views here.
+
+# API Event order create
+
+
+class EventOrderMixin(CreateAPIView):
+    queryset = EventOrder.objects.all()
+    serializer_class = CreateEventOrderSerializer
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
 
 # CREATED OREDER
 

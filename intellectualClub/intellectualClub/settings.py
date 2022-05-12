@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'theblog.apps.TheblogConfig',
     'ckeditor',
+    # 'rest_framework.authtoken',
+    'djoser',
 ]
 
 MIDDLEWARE = [
@@ -160,7 +162,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-LOGIN_URL = '/login'
+# LOGIN_URL = '/login'
 
 
 # EMAIL SETTINGS
@@ -185,5 +187,16 @@ EMAIL_USE_SSL = False
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_PERMISSION_CLASSES': [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+    'DEFAULT_PARSER_CLASSES': [
+        "rest_framework.parsers.JSONParser",
+
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        "rest_framework.authentication.SessionAuthentication",
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ]
 }

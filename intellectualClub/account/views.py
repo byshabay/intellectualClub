@@ -7,6 +7,9 @@ from django.urls.base import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
 from django.views.generic import DetailView
+from rest_framework.views import APIView
+from rest_framework import generics, permissions
+from rest_framework.exceptions import PermissionDenied
 
 from django.views import generic
 from account.models import Profile
@@ -14,23 +17,37 @@ from main.utils import *
 
 from .forms import *
 
+
+# API LOGOUT
+
+class Logout(APIView):
+
+    def get(self, request, format=None):
+        request.user.auth_token.delete()
+        return Response(status=status.HTTP_200_OK)
+
+
+class IsUser(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        return obj.owner == request.user
+
 #  REGISTER USER CLASS
 
 
-class RegisterUser(DataMixin, CreateView):
-    form_class = RegisterUserForm
-    template_name = 'account/register.html'
-    success_url = reverse_lazy('login')
+# class RegisterUser(DataMixin, CreateView):
+#     form_class = RegisterUserForm
+#     template_name = 'account/register.html'
+#     success_url = reverse_lazy('login')
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title='Регистрация пользователей')
-        return dict(list(context.items()) + list(c_def.items()))
+#     def get_context_data(self, *, object_list=None, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         c_def = self.get_user_context(title='Регистрация пользователей')
+#         return dict(list(context.items()) + list(c_def.items()))
 
-    def form_valid(self, form):
-        user = form.save()
-        login(self.request, user)
-        return redirect('home')
+#     def form_valid(self, form):
+#         user = form.save()
+#         login(self.request, user)
+#         return redirect('home')
 
 
 # LOGIN USER CLASS

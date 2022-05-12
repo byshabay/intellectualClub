@@ -3,11 +3,13 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls.i18n import i18n_patterns
 
+
 from intellectualClub import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('i18n/', include('django.conf.urls.i18n')),
+
 ]
 
 urlpatterns += i18n_patterns(
