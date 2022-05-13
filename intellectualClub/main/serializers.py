@@ -7,4 +7,4 @@ class ShowEventSerializer(ModelSerializer):
     class Meta:
         model = Event
         fields = ['id', 'title', 'price', 'discount',
-                  'slug', 'description', 'short_description', 'photo', 'is_published', 'cat']
+                  'slug', 'author', 'author_language', 'description', 'short_description', 'photo', 'date', 'is_published', 'is_popular', 'is_promo', 'cat', 'meta']

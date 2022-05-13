@@ -36,8 +36,6 @@ class EventOrder(models.Model):
     customer_phone = models.CharField(
         max_length=48, blank=True, null=True, default=None)
     event = models.ForeignKey(Event, on_delete=models.PROTECT)
-    date = models.ForeignKey(
-        EventSchedule, on_delete=models.PROTECT)
     status = models.ForeignKey(Status,  on_delete=models.PROTECT, default=1)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)

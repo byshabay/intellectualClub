@@ -1,4 +1,7 @@
+from pyexpat import model
 from time import strftime
+from unicodedata import name
+from webbrowser import Grail
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
@@ -7,24 +10,41 @@ from django.urls import reverse
 # 1.EVENT TABLE START
 
 class Event(models.Model):
+    ENGLISH = 'EN'
+    FRENCH = 'FR'
+    RUSSIAN = 'RUS'
+    GERMAN = 'GER'
+    AUTHOR_LANGUAGE = [
+        (ENGLISH, 'English'),
+        (FRENCH, 'French'),
+        (RUSSIAN, 'Russian'),
+        (GERMAN, 'German'),
+    ]
     title = models.CharField('Название', max_length=50)
     price = models.DecimalField(
         max_digits=10, decimal_places=0, default=0)
     discount = models.IntegerField(blank=True, null=True, default=0)
     slug = models.SlugField(unique=True, db_index=True, verbose_name='URL')
     author = models.ForeignKey(User, on_delete=models.PROTECT, default=1)
-    short_description = models.TextField(
-        'Краткое описание', blank=True, null=True, default=None)
+    short_description = models.CharField(max_length=228)
     description = models.TextField('Описание')
     photo = models.ImageField(
         'Фото', upload_to="photos/%Y/%m/%d/", null=True)
+    date = models.DateTimeField(null=True, blank=True)
     time_create = models.DateTimeField('Дата создания', auto_now_add=True)
     time_upload = models.DateTimeField('Дата изменения', auto_now=True)
+    author_language = models.CharField(
+        max_length=3,
+        choices=AUTHOR_LANGUAGE,
+        default=RUSSIAN,
+    )
     is_published = models.BooleanField('Публикация', default=True)
     is_popular = models.BooleanField(default=False)
     is_promo = models.BooleanField(default=False)
     cat = models.ForeignKey('Category',
                             on_delete=models.PROTECT, verbose_name='Категория')
+    meta = models.ManyToManyField(
+        'CategoryMetaData', default=1)
 
     def __str__(self):
         return "%s" % (self.title)
@@ -98,3 +118,27 @@ class EventImage(models.Model):
         verbose_name_plural = 'Изображения'
 
 # 4.EVENT IMAGE TABLE END
+
+
+# 5. METADATA TABLE START
+
+class CategoryMetaData(models.Model):
+    cat = models.ForeignKey(Category, on_delete=models.CASCADE)
+    name = models.ForeignKey('GroupOfMetaData', on_delete=models.CASCADE)
+    value = models.CharField(max_length=255)
+
+    def __str__(self):
+        return "%s | %s | %s" % (self.name, self.value, self.cat)
+
+
+# 5. METADATA TABLE END
+
+# 6. GROUP OF METADATA START
+
+class GroupOfMetaData(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return "%s" % (self.name)
+
+# 6. GROUP OF METADATA END

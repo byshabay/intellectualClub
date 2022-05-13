@@ -21,6 +21,21 @@ from .utils import *
 
 from account.views import IsUser
 
+# Event List JSON
+
+
+class EventViewSet(ModelViewSet):
+    queryset = Event.objects.all()
+    serializer_class = ShowEventSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = EventCategoryFilter
+
+    # @action(detail=True, methods=['post'])
+    # def get_category(self, request, **kwargs):
+    #     category = self.kwargs['cat']
+    #     return Event.objects.filter(cat__id == category)
+
+
 # HOME PAGE
 
 
@@ -64,19 +79,6 @@ class ShowEventCart(DataMixin, DetailView, FormView):
 
         return dict(list(context.items()) + list(c_def.items()))
 
-# Event List JSON
-
-
-class EventViewSet(ModelViewSet):
-    queryset = Event.objects.all()
-    serializer_class = ShowEventSerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_class = EventCategoryFilter
-
-    # @action(detail=True, methods=['post'])
-    # def get_category(self, request, **kwargs):
-    #     category = self.kwargs['cat']
-    #     return Event.objects.filter(cat__id == category)
 
 # CATEGORY
 

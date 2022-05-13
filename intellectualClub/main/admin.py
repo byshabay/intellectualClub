@@ -9,6 +9,11 @@ class EventImageInline(admin.TabularInline):
     extra = 0
 
 
+class CategoryMetaDataInline(admin.TabularInline):
+    model = CategoryMetaData
+    extra = 0
+
+
 class EventScheduleInline(admin.TabularInline):
     model = EventSchedule
     extra = 0
@@ -21,14 +26,19 @@ class EventAdmin(TranslationAdmin):
     list_editable = ('is_published',)
     list_filter = ('is_published', 'time_create')
     prepopulated_fields = {'slug': ("title",)}
-    inlines = [EventImageInline, EventScheduleInline]
+    # inlines = [EventImageInline, EventScheduleInline]
+
+
+class CategoryMetaDataAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'value', 'cat')
 
 
 class CategoryAdmin(TranslationAdmin):
-    list_display = ('id', 'name')
+    list_display = ('id', 'name', )
     list_display_links = ('id', 'name')
     search_fields = ('name',)
     prepopulated_fields = {'slug': ("name",)}
+    inlines = [CategoryMetaDataInline]
 
 
 class EventScheduleAdmin(admin.ModelAdmin):
@@ -48,3 +58,5 @@ admin.site.register(Event, EventAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(EventSchedule, EventScheduleAdmin)
 admin.site.register(EventImage, EventImageAdmin)
+admin.site.register(CategoryMetaData, CategoryMetaDataAdmin)
+admin.site.register(GroupOfMetaData)

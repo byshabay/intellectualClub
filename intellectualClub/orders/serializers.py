@@ -8,7 +8,7 @@ class CreateEventOrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = EventOrder
         fields = ['total_price', 'customer_email',
-                  'customer_name', 'customer_phone', 'event', 'date']
+                  'customer_name', 'customer_phone', 'event']
 
         # def create(self, validated_data):
         #     # pass all parameters from serializer
