@@ -16,7 +16,7 @@ from .serializers import CreateEventOrderSerializer
 # API Event order create
 
 
-class EventOrderMixin(CreateAPIView):
+class EventOrderAPIView(generics.GenericAPIView, mixins.CreateModelMixin):
     queryset = EventOrder.objects.all()
     serializer_class = CreateEventOrderSerializer
 

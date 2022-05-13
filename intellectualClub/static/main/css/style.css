@@ -1,0 +1,123 @@
+/* 
+---------------------------------------------------
+COMMON STYLES START
+---------------------------------------------------
+*/
+
+html, body {
+    position: relative;
+    min-height: 100vh;
+
+    background-color: #edeef0;
+}
+
+body {
+    padding-bottom: 133px;
+}
+
+footer {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.nmb {
+    display: flex;
+    width: 30%;
+    margin: 30px auto 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nmb a {
+    display: block;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    list-style: none;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1400px;
+    width: 100%;
+    padding: 0 30px;
+    margin: 0 auto;
+}
+
+.common_h2 {
+    width: 100%;
+    padding: 30px 0;
+
+    text-align: center;
+
+}
+
+/* 1.HEADER START */
+
+.header nav ul {
+    display: flex;
+    padding: 30px 0;
+}
+
+.header nav ul li {
+    margin-right: 10px;
+
+    text-transform: uppercase;
+}
+
+/* 1.HEADER END */
+
+/* 
+---------------------------------------------------
+COMMON STYLES END
+---------------------------------------------------
+*/
+
+/* 
+---------------------------------------------------
+HOME PAGE START
+---------------------------------------------------
+*/
+
+.events_type__list {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+
+.product-item {
+    position: relative;
+    height: auto;
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+
+    background-color: #fff;
+    border: 1px solid lightgray;
+}
+
+/* 
+---------------------------------------------------
+HOME PAGE END
+---------------------------------------------------
+*/
+
+#counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+
+
+
+
