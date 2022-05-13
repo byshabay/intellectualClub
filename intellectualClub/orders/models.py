@@ -51,3 +51,35 @@ class EventOrder(models.Model):
         super(EventOrder, self).save(*args, **kwargs)
 
 # EVENT ORDERS TABLE END
+
+# 7. ORDER A CONSULTATION START
+
+
+class ConsultationOrder(models.Model):
+    ENGLISH = 'EN'
+    FRENCH = 'FR'
+    RUSSIAN = 'RUS'
+    GERMAN = 'GER'
+    LANGUAGES = [
+        (ENGLISH, 'English'),
+        (FRENCH, 'French'),
+        (RUSSIAN, 'Russian'),
+        (GERMAN, 'German'),
+    ]
+    customer_email = models.CharField(max_length=255)
+    customer_phone = models.CharField(max_length=255)
+    customer_name = models.CharField(max_length=255)
+    language = models.CharField(
+        max_length=3,
+        choices=LANGUAGES,
+        default=ENGLISH,
+    )
+    comment = models.TextField()
+    status = models.ForeignKey(Status,  on_delete=models.PROTECT, default=1)
+    created = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __str__(self):
+        return "Заказ на консультацию №%s" % (self.id)
+
+# 7. ORDER A CONSULTATION END

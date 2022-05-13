@@ -2,16 +2,7 @@ from django.contrib import admin
 from orders.models import *
 from modeltranslation.admin import TranslationAdmin
 
-# 1.INLINES START
-
-
-# class EventInOrderInline(admin.TabularInline):
-#     model = EventInOrder
-#     extra = 0
-
-# 1.INLINES END
-
-# 2.STATUS START
+# 1.STATUS START
 
 
 class StatusAdmin(TranslationAdmin):
@@ -23,33 +14,23 @@ class StatusAdmin(TranslationAdmin):
 
 admin.site.register(Status, StatusAdmin)
 
-# 2.STATUS END
-
-# 3.ORDER START
-
-
-# class OrderAdmin(admin.ModelAdmin):
-#     list_display = [field.name for field in Order._meta.fields]
-#     inlines = [EventInOrderInline]
-
-#     class Meta:
-#         model = Order
+# 1.STATUS END
 
 
 admin.site.register(EventOrder)
 
-# 3.ORDER END
-
-# 4.EVENT IN ORDER START
+# 2. ORDER A CONSULTATION START
 
 
-# class EventInOrderAdmin(admin.ModelAdmin):
-#     list_display = [field.name for field in EventInOrder._meta.fields]
+class ConsultationOrderAdmin(admin.ModelAdmin):
+    list_display = ('id',  'customer_email',
+                    'customer_phone', 'customer_name', 'status', 'language', 'comment')
+    search_fields = ('created', 'customer_email',
+                     'customer_phone', 'customer_name')
+    list_editable = ('status',)
+    list_display_links = ('id', 'customer_email', 'customer_phone')
 
-#     class Meta:
-#         model = EventInOrder
 
+admin.site.register(ConsultationOrder, ConsultationOrderAdmin)
 
-# admin.site.register(EventInOrder, EventInOrderAdmin)
-
-# 4.EVENT IN ORDER END
+# 2. ORDER A CONSULTATION END

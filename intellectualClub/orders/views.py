@@ -9,11 +9,11 @@ from orders.forms import *
 from orders.models import *
 from rest_framework.generics import get_object_or_404
 from rest_framework.generics import CreateAPIView, ListAPIView
-from .serializers import CreateEventOrderSerializer
+from .serializers import CreateEventOrderSerializer, ConsultationOrderSerializer
 
 # Create your views here.
 
-# API Event order create
+# 1.API EVENT ORDER CREATE START
 
 
 class EventOrderAPIView(generics.GenericAPIView, mixins.CreateModelMixin):
@@ -23,36 +23,51 @@ class EventOrderAPIView(generics.GenericAPIView, mixins.CreateModelMixin):
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
+# 1.API EVENT ORDER CREATE END
 
-# CREATED OREDER
-
-
-def order_created(request):
-    return render(request, 'orders/created_order.html', {})
-
-# CREATING ORDER
+# 2.API CONSULTATION ORDER START
 
 
-def order_creating(request, pk):
-    event = Event.objects.get(id=pk)
-    if request.method == 'GET':
-        form = OrderCreationForm()
-    elif request.method == 'POST':
-        form = OrderCreationForm(request.POST)
-        if form.is_valid():
-            subject = "Новый заказ на событие form.cleaned_data['event']"
-            from_email = form.cleaned_data['customer_email']
-            message = "Вам поступил новый заказ"
-            try:
-                send_mail(f'{subject} от {from_email}', message,
-                          DEFAULT_FROM_EMAIL, RECIPIENTS_EMAIL)
-            except BadHeaderError:
-                return HttpResponse('Ошибка в теме письма.')
-            form.save()
-            return redirect('order_created')
-    else:
-        return HttpResponse('Неверный запрос.')
-    return render(request, 'orders/creating_order.html', {'form': form, 'event': event})
+class ConsultationOrderMixin(generics.GenericAPIView, mixins.CreateModelMixin):
+    queryset = ConsultationOrder.objects.all()
+    serializer_class = ConsultationOrderSerializer
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+
+# 2.API CONSULTATION ORDER END
+
+
+# # CREATED OREDER
+
+
+# def order_created(request):
+#     return render(request, 'orders/created_order.html', {})
+
+# # CREATING ORDER
+
+
+# def order_creating(request, pk):
+#     event = Event.objects.get(id=pk)
+#     if request.method == 'GET':
+#         form = OrderCreationForm()
+#     elif request.method == 'POST':
+#         form = OrderCreationForm(request.POST)
+#         if form.is_valid():
+#             subject = "Новый заказ на событие form.cleaned_data['event']"
+#             from_email = form.cleaned_data['customer_email']
+#             message = "Вам поступил новый заказ"
+#             try:
+#                 send_mail(f'{subject} от {from_email}', message,
+#                           DEFAULT_FROM_EMAIL, RECIPIENTS_EMAIL)
+#             except BadHeaderError:
+#                 return HttpResponse('Ошибка в теме письма.')
+#             form.save()
+#             return redirect('order_created')
+#     else:
+#         return HttpResponse('Неверный запрос.')
+#     return render(request, 'orders/creating_order.html', {'form': form, 'event': event})
 
     # form = OrderCreationForm
     # event = Event.objects.get(id=pk)
