@@ -34,7 +34,8 @@ class CategoryMetaDataAdmin(admin.ModelAdmin):
 
 
 class CategoryAdmin(TranslationAdmin):
-    list_display = ('id', 'name', )
+    list_display = ('id', 'name', 'is_active')
+    list_editable = ('is_active',)
     list_display_links = ('id', 'name')
     search_fields = ('name',)
     prepopulated_fields = {'slug': ("name",)}

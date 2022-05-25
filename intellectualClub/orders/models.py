@@ -59,12 +59,12 @@ class ConsultationOrder(models.Model):
     ENGLISH = 'EN'
     FRENCH = 'FR'
     RUSSIAN = 'RUS'
-    GERMAN = 'GER'
+    # GERMAN = 'GER'
     LANGUAGES = [
         (ENGLISH, 'English'),
         (FRENCH, 'French'),
         (RUSSIAN, 'Russian'),
-        (GERMAN, 'German'),
+        # (GERMAN, 'German'),
     ]
     customer_email = models.CharField(max_length=255)
     customer_phone = models.CharField(max_length=255)

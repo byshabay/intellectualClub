@@ -13,12 +13,12 @@ class Event(models.Model):
     ENGLISH = 'EN'
     FRENCH = 'FR'
     RUSSIAN = 'RUS'
-    GERMAN = 'GER'
+    # GERMAN = 'GER'
     AUTHOR_LANGUAGE = [
         (ENGLISH, 'English'),
         (FRENCH, 'French'),
         (RUSSIAN, 'Russian'),
-        (GERMAN, 'German'),
+        # (GERMAN, 'German'),
     ]
     title = models.CharField('Название', max_length=50)
     price = models.DecimalField(
