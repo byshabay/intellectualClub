@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path, os
+from corsheaders.defaults import default_headers
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'theblog.apps.TheblogConfig',
     'ckeditor',
+    'corsheaders',
     # 'rest_framework.authtoken',
     'djoser',
 ]
@@ -53,6 +55,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -91,6 +94,41 @@ DATABASES = {
         'NAME': str(os.path.join(BASE_DIR / 'db.sqlite3')),
     }
 }
+
+
+# If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
+# CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3030',
+#     'http://localhost:3000',
+#     'http://127.0.0.1:3000',
+#     'http://localhost:8000',
+#     'http://127.0.0.1:8000',
+# ]
+# If this is used, then not need to use `CORS_ALLOW_ALL_ORIGINS = True`
+# CORS_ALLOWED_ORIGIN_REGEXES = [
+#     'http://localhost:3030',
+#     'http://localhost:3000',
+#     'http://127.0.0.1:3000',
+#     'http://localhost:8000',
+#     'http://127.0.0.1:8000',
+# ]
+
+CORS_ALLOW_HEADERS = default_headers + (
+    'Access-Control-Allow-Headers',
+    'Access-Control-Allow-Credentials',
+    'Access-Control-Allow-Origin',
+)
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+)
 
 
 # Password validation
@@ -188,9 +226,9 @@ EMAIL_USE_SSL = False
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-    'DEFAULT_PERMISSION_CLASSES': [
-        "rest_framework.permissions.IsAuthenticated",
-    ],
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     "rest_framework.permissions.IsAuthenticated",
+    # ],
     # 'DEFAULT_PARSER_CLASSES': [
     #     "rest_framework.parsers.JSONParser",
 
