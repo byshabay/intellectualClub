@@ -23,9 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ifep92n$xa65ib)!w$t@=k@2^vc()w&q-$((bkd&tb!3$0w(6f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['http://shabba0u.beget.tech/', 'shabba0u.beget.tech', 'http://78.140.241.28:3000/',
+    '78.140.241.28', '78.140.241.28:3000', 'http://78.140.241.28/']
 
 
 # Application definition
@@ -92,28 +93,20 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': str(os.path.join(BASE_DIR / 'db.sqlite3')),
+        #'ENGINE': 'django.db.backends.mysql',
+        #'NAME': 'shabba0u_istalea',
+        #'USER': 'shabba0u_istalea',
+        #'PASSWORD': 'Xvia3*jR',
+        #'HOST': 'localhost',
+        #'PORT': '3306',
     }
 }
-
-
-# If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
-# CORS_ALLOW_ALL_ORIGINS = True
-# CORS_ALLOW_CREDENTIALS = True
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:3030',
-#     'http://localhost:3000',
-#     'http://127.0.0.1:3000',
-#     'http://localhost:8000',
-#     'http://127.0.0.1:8000',
-# ]
-# If this is used, then not need to use `CORS_ALLOW_ALL_ORIGINS = True`
-# CORS_ALLOWED_ORIGIN_REGEXES = [
-#     'http://localhost:3030',
-#     'http://localhost:3000',
-#     'http://127.0.0.1:3000',
-#     'http://localhost:8000',
-#     'http://127.0.0.1:8000',
-# ]
+#DATABASES = {
+ ##   'default': {
+ #       'ENGINE': 'django.db.backends.sqlite3',
+  #      'NAME': str(os.path.join(BASE_DIR / 'db.sqlite3')),
+  #  }
+#}
 
 CORS_ALLOW_HEADERS = default_headers + (
     'Access-Control-Allow-Headers',
@@ -128,7 +121,21 @@ CORS_ORIGIN_WHITELIST = (
     'http://127.0.0.1:3000',
     'http://localhost:8000',
     'http://127.0.0.1:8000',
+    'http://78.140.241.28:3000/',
+    'http://78.140.241.28/',
+    'http://192.168.0.13:3000/excursions', 
+    'http://localhost:3000/excursions',
 )
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+    'http://78.140.241.28:3000/',
+    'http://78.140.241.28/',
+]
+CORS_ALLOW_CREDENTIALS=True
 
 
 # Password validation
@@ -183,12 +190,12 @@ LOCALE_PATHS = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'intellectualClub/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = []
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_URL = 'intellectualClub/media/'
 
 
 # Default primary key field type
@@ -226,9 +233,9 @@ EMAIL_USE_SSL = False
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-    # 'DEFAULT_PERMISSION_CLASSES': [
-    #     "rest_framework.permissions.IsAuthenticated",
-    # ],
+    #'DEFAULT_PERMISSION_CLASSES': [
+     #   "rest_framework.permissions.IsAuthenticated",
+    #],
     # 'DEFAULT_PARSER_CLASSES': [
     #     "rest_framework.parsers.JSONParser",
 
