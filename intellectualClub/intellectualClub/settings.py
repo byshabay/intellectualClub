@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ifep92n$xa65ib)!w$t@=k@2^vc()w&q-$((bkd&tb!3$0w(6f
 DEBUG = False
 
 ALLOWED_HOSTS = ['http://shabba0u.beget.tech/', 'shabba0u.beget.tech', 'http://78.140.241.28:3000/',
-    '78.140.241.28', '78.140.241.28:3000', 'http://78.140.241.28/']
+    '78.140.241.28', '78.140.241.28:3000', 'http://78.140.241.28/',]
 
 
 # Application definition
